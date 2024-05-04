@@ -1991,6 +1991,8 @@ GameObject:
   - component: {fileID: 8814791993116156008}
   - component: {fileID: 543450651912912010}
   - component: {fileID: 1327393976631247793}
+  - component: {fileID: 1832964450400461280}
+  - component: {fileID: 317142640544380230}
   m_Layer: 0
   m_Name: cutlass
   m_TagString: Untagged
@@ -2104,6 +2106,35 @@ MonoBehaviour:
   BackGlass: {fileID: 4859503060438172120}
   _intensityBreakingLights: 10
   _intensityBackLights: 5
+--- !u!114 &1832964450400461280
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8544743893330582834}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0adb86c65f753c43aaae437fb019017, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _maxFuel: 100
+  _fuelConsumptionRate: 1
+  _currentFuel: 0
+--- !u!114 &317142640544380230
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8544743893330582834}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c6d34fff5939c7408858f0153d06d4b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _fuelLevel: {fileID: 0}
+  _carTank: {fileID: 1832964450400461280}
 --- !u!1 &8560594469158311084
 GameObject:
   m_ObjectHideFlags: 0
