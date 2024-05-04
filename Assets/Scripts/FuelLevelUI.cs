@@ -8,7 +8,7 @@ namespace Off_Road
         [SerializeField] private Image _fuelLevel;
         [SerializeField] private CarTank _carTank;
 
-        private void Update()
+        void Update()
         {
             _fuelLevel.fillAmount = _carTank.CurrentFuel/_carTank.MaxFuel;
         }

@@ -8,7 +8,7 @@ namespace Off_Road
         [SerializeField] private float _fuelConsumptionRate = 1f;
         [SerializeField] private float _currentFuel;
 
-        private void Start()
+        void Start()
         {
             _currentFuel = _maxFuel;
         }
@@ -23,7 +23,7 @@ namespace Off_Road
             get { return _currentFuel; }
         }
 
-        private void Update()
+        void Update()
         {
             ConsumeFuel(_fuelConsumptionRate * Time.deltaTime);
 
@@ -31,12 +31,12 @@ namespace Off_Road
                 Debug.Log("Out of fuel");
         }
 
-        private void ConsumeFuel(float value)
+        void ConsumeFuel(float value)
         {
             _currentFuel -= value;
         }
 
-        public void Refuel(float value)
+        void Refuel(float value)
         {
             _currentFuel += value;
         }
