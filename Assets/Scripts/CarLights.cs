@@ -4,93 +4,74 @@ namespace Off_Road
 {
     public class CarLights : MonoBehaviour
     {
-        [SerializeField] private Light[] _frontLights;
-        [SerializeField] private Light[] _backLights;
+        [SerializeField] Light[] _frontLights;
+        [SerializeField] Light[] _backLights;
 
-        [SerializeField] private Renderer FrontGlass;
-        [SerializeField] private Renderer BackGlass;
+        [SerializeField] Renderer FrontGlass;
+        [SerializeField] Renderer BackGlass;
 
-        [SerializeField] private float _intensityBreakingLights = 10f;
-        [SerializeField] private float _intensityBackLights = 5f;
+        [SerializeField] float _intensityBreakingLights = 10f;
+        [SerializeField] float _intensityBackLights = 5f;
 
-        private bool _lightsEnabled = false;
-        private Color _baseColor;
+        bool _lightsEnabled;
+        Color _baseColor;
+        
+        const string EMISSION = "_EMISSION";
 
-        private void Start()
+        void Start()
         {
             _baseColor = BackGlass.material.GetColor("_EmissionColor");
         }
 
-        private void Update()
+        void Update()
         {
-            TurnLights();
-            BrakingLights();
+            HandleLightToggle();
+            HandleBrakingLights();
         }
 
-        private void BrakingLights()
+        void HandleLightToggle()
         {
-            if (Input.GetAxis("Vertical") < 0)
-            {
-                for (int i = 0; i < _backLights.Length; i++)
-                {
-                    _backLights[i].enabled = true;
-                    _backLights[i].intensity = _intensityBreakingLights;
-                }
+            if (!Input.GetKeyDown(KeyCode.L))
+                return;
+            
+            _lightsEnabled = !_lightsEnabled;
+            ToggleLights(_frontLights, _lightsEnabled);
+            ToggleLights(_backLights, _lightsEnabled);
+            ToggleEmission(FrontGlass, _lightsEnabled);
+            ToggleEmission(BackGlass, _lightsEnabled);
+        }
 
-                BackGlass.material.SetColor("_EmissionColor", Color.red);
-                BackGlass.material.EnableKeyword("_EMISSION");
+        void HandleBrakingLights()
+        {
+            bool isBraking = Input.GetAxis("Vertical") < 0;
+            foreach (Light light in _backLights)
+            {
+                light.enabled = isBraking || _lightsEnabled;
+                light.intensity = isBraking ? _intensityBreakingLights : _intensityBackLights;
+            }
+
+            BackGlass.material.SetColor("_EmissionColor", isBraking ? Color.red : _baseColor);
+            ToggleEmission(BackGlass, isBraking || _lightsEnabled);
+        }
+
+        void ToggleLights(Light[] lights, bool state)
+        {
+            foreach (Light light in lights)
+            {
+                light.enabled = state;
+            }
+        }
+
+        void ToggleEmission(Renderer renderer, bool state)
+        {
+            if (state)
+            {
+                renderer.material.EnableKeyword(EMISSION);
             }
             else
             {
-                for (int i = 0; i < _backLights.Length; i++)
-                {
-                    _backLights[i].intensity = _intensityBackLights;
-                }
-
-                BackGlass.material.SetColor("_EmissionColor", _baseColor);
-
-                if (!_lightsEnabled)
-                {
-                    for (int i = 0; i < _backLights.Length; i++)
-                    {
-                        _backLights[i].enabled = false;
-                    }
-
-                    BackGlass.material.DisableKeyword("_EMISSION");
-                }
-
+                renderer.material.DisableKeyword(EMISSION);
             }
         }
-
-        private void TurnLights()
-        {
-            if (Input.GetKeyDown(KeyCode.L))
-            {
-                _lightsEnabled = !_lightsEnabled;
-
-                for (int i = 0; i < _frontLights.Length; i++)
-                {
-                    _frontLights[i].enabled = _lightsEnabled;
-                }
-
-                for (int i = 0; i < _backLights.Length; i++)
-                {
-                    _backLights[i].enabled = _lightsEnabled;
-                }
-
-                if (_lightsEnabled)
-                {
-                    BackGlass.material.EnableKeyword("_EMISSION");
-                    FrontGlass.material.EnableKeyword("_EMISSION");
-
-                }
-                else
-                {
-                    BackGlass.material.DisableKeyword("_EMISSION");
-                    FrontGlass.material.DisableKeyword("_EMISSION");
-                }
-            }
-        }
-
     }
 }
