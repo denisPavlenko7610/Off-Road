@@ -4,13 +4,14 @@ namespace Off_Road
 {
     public class CarLights : MonoBehaviour
     {
-        [SerializeField] private Light _lightFrontRight;
-        [SerializeField] private Light _lightFrontLeft;
-        [SerializeField] private Light _lightBackRight;
-        [SerializeField] private Light _lightBackLeft;
+        [SerializeField] private Light[] _frontLights;
+        [SerializeField] private Light[] _backLights;
 
         [SerializeField] private Renderer FrontGlass;
         [SerializeField] private Renderer BackGlass;
+
+        [SerializeField] private float _intensityBreakingLights = 10f;
+        [SerializeField] private float _intensityBackLights = 5f;
 
         private bool _lightsEnabled = false;
         private Color _baseColor;
@@ -30,24 +31,31 @@ namespace Off_Road
         {
             if (Input.GetAxis("Vertical") < 0)
             {
-                _lightBackRight.enabled = true;
-                _lightBackLeft.enabled = true;
-                _lightBackRight.intensity = 10f;
-                _lightBackLeft.intensity = 10f;
+                for (int i = 0; i < _backLights.Length; i++)
+                {
+                    _backLights[i].enabled = true;
+                    _backLights[i].intensity = _intensityBreakingLights;
+                }
+
                 BackGlass.material.SetColor("_EmissionColor", Color.red);
                 BackGlass.material.EnableKeyword("_EMISSION");
             }
             else
             {
-                _lightBackRight.intensity = 5f;
-                _lightBackLeft.intensity = 5f;
+                for (int i = 0; i < _backLights.Length; i++)
+                {
+                    _backLights[i].intensity = _intensityBackLights;
+                }
+
                 BackGlass.material.SetColor("_EmissionColor", _baseColor);
 
                 if (!_lightsEnabled)
                 {
-                    _lightBackRight.enabled = false;
-                    _lightBackLeft.enabled = false;
-                   
+                    for (int i = 0; i < _backLights.Length; i++)
+                    {
+                        _backLights[i].enabled = false;
+                    }
+
                     BackGlass.material.DisableKeyword("_EMISSION");
                 }
 
@@ -60,10 +68,15 @@ namespace Off_Road
             {
                 _lightsEnabled = !_lightsEnabled;
 
-                _lightFrontRight.enabled = _lightsEnabled;
-                _lightFrontLeft.enabled = _lightsEnabled;
-                _lightBackRight.enabled = _lightsEnabled;
-                _lightBackLeft.enabled = _lightsEnabled;
+                for (int i = 0; i < _frontLights.Length; i++)
+                {
+                    _frontLights[i].enabled = _lightsEnabled;
+                }
+
+                for (int i = 0; i < _backLights.Length; i++)
+                {
+                    _backLights[i].enabled = _lightsEnabled;
+                }
 
                 if (_lightsEnabled)
                 {
