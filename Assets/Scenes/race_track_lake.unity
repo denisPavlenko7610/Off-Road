@@ -2475,7 +2475,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 315162670}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.060720112, y: 0.8596158, z: -0.10517036, w: -0.49629924}
+  m_LocalRotation: {x: -0.06072012, y: 0.8596158, z: -0.10517037, w: -0.49629924}
   m_LocalPosition: {x: 97.532555, y: 4.994, z: 26.195004}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -3887,7 +3887,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 422575950}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.060720112, y: 0.8596158, z: -0.10517036, w: -0.49629924}
+  m_LocalRotation: {x: -0.06072012, y: 0.8596158, z: -0.10517037, w: -0.49629924}
   m_LocalPosition: {x: 97.532555, y: 4.994, z: 26.195004}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -14878,6 +14878,14 @@ PrefabInstance:
       propertyPath: _fuelLevel
       value: 
       objectReference: {fileID: 252460887}
+    - target: {fileID: 1832964450400461280, guid: 07367046f69a6bd4ca239463acf3089c, type: 3}
+      propertyPath: OnFuelChanged.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1832964450400461280, guid: 07367046f69a6bd4ca239463acf3089c, type: 3}
+      propertyPath: OnFuelChanged.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8544743893330582834, guid: 07367046f69a6bd4ca239463acf3089c, type: 3}
       propertyPath: m_Name
       value: cutlass

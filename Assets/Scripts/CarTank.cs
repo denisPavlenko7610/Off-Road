@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 namespace Off_Road
@@ -13,6 +14,8 @@ namespace Off_Road
             _currentFuel = _maxFuel;
         }
 
+        public Action <float> OnFuelChanged;
+
         public float MaxFuel
         {
             get { return _maxFuel; }
@@ -26,7 +29,6 @@ namespace Off_Road
         void Update()
         {
             ConsumeFuel(_fuelConsumptionRate * Time.deltaTime);
-
             if (_currentFuel <= 0f)
                 Debug.Log("Out of fuel");
         }
@@ -34,11 +36,15 @@ namespace Off_Road
         void ConsumeFuel(float value)
         {
             _currentFuel -= value;
+            _currentFuel = Mathf.Clamp(_currentFuel, 0f, _maxFuel);
+            OnFuelChanged?.Invoke(_currentFuel/_maxFuel);
         }
 
         void Refuel(float value)
         {
             _currentFuel += value;
+            _currentFuel = Mathf.Clamp(_currentFuel, 0f, _maxFuel);
+            OnFuelChanged?.Invoke(_currentFuel / _maxFuel);
         }
     }
 }
