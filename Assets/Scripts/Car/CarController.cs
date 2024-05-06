@@ -6,36 +6,36 @@ namespace Off_Road
 {
     public class CarController : MonoBehaviour
     {
-        [SerializeField] private DriveUnit driveUnit;
-        [SerializeField, Attach(Attach.Child)] private Wheel[] Wheels;
+        [SerializeField] DriveUnit driveUnit;
+        [SerializeField, Attach(Attach.Child)] Wheel[] Wheels;
 
-        [SerializeField] private float maxSteerAngle = 30f;
-        [SerializeField] private float motorForce = 50f;
+        [SerializeField] float maxSteerAngle = 30f;
+        [SerializeField] float motorForce = 50f;
 
-        private float horizontalInput;
-        private float verticalInput;
-        private float steeringAngle;
+        float horizontalInput;
+        float verticalInput;
+        float steeringAngle;
 
 
-        private void Update()
+        void Update()
         {
             GetInput();
         }
 
-        private void FixedUpdate()
+        void FixedUpdate()
         {
             Steer();
             Accelerate();
             UpdateWheelPoses();
         }
 
-        public void GetInput()
+        void GetInput()
         {
             horizontalInput = Input.GetAxis("Horizontal");
             verticalInput = Input.GetAxis("Vertical");
         }
 
-        private void Steer()
+        void Steer()
         {
             steeringAngle = maxSteerAngle * horizontalInput;
             foreach (var wheel in Wheels)
@@ -47,11 +47,11 @@ namespace Off_Road
             }
         }
 
-        private bool IsFrontWheel(Wheel wheel)
+        bool IsFrontWheel(Wheel wheel)
             => wheel.WheelType == WheelType.FL
-               || wheel.WheelType == WheelType.FR;
+                || wheel.WheelType == WheelType.FR;
 
-        private void Accelerate()
+        void Accelerate()
         {
             if (driveUnit == DriveUnit.Rear)
             {
@@ -67,7 +67,7 @@ namespace Off_Road
             }
         }
 
-        private void AccelerateWheels()
+        void AccelerateWheels()
         {
             foreach (var wheel in Wheels)
             {
@@ -75,7 +75,7 @@ namespace Off_Road
             }
         }
 
-        private void AccelerateFrontWheels()
+        void AccelerateFrontWheels()
         {
             foreach (var wheel in Wheels)
             {
@@ -86,7 +86,7 @@ namespace Off_Road
             }
         }
 
-        private void AccelerateRearWheels()
+        void AccelerateRearWheels()
         {
             foreach (var wheel in Wheels)
             {
@@ -97,19 +97,19 @@ namespace Off_Road
             }
         }
 
-        private void UpdateWheelPoses()
+        void UpdateWheelPoses()
         {
             UpdateWheelPose(Wheels);
             UpdateWheelPose(Wheels);
         }
 
-        private void UpdateWheelPose(Wheel[] wheels)
+        void UpdateWheelPose(Wheel[] wheels)
         {
             foreach (var wheel in wheels)
             {
-                var wheelTransform = wheel.WheelTransform.transform;
-                var position = wheelTransform.position;
-                var rotation = wheelTransform.rotation;
+                Transform wheelTransform = wheel.WheelTransform.transform;
+                Vector3 position = wheelTransform.position;
+                Quaternion rotation = wheelTransform.rotation;
 
                 wheel.WheelCollider.GetWorldPose(out position, out rotation);
 
@@ -118,7 +118,7 @@ namespace Off_Road
 
                 if (wheel.WheelType == WheelType.FL || wheel.WheelType == WheelType.RL)
                 {
-                    wheelTransform.Rotate(Vector3.up,180);
+                    wheelTransform.Rotate(Vector3.up, 180);
                 }
             }
         }

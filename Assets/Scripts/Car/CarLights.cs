@@ -35,8 +35,8 @@ namespace Off_Road
                 return;
             
             _lightsEnabled = !_lightsEnabled;
-            ToggleLights(_frontLights, _lightsEnabled);
-            ToggleLights(_backLights, _lightsEnabled);
+            ToggleLights(_frontLights);
+            ToggleLights(_backLights);
             ToggleEmission(FrontGlass, _lightsEnabled);
             ToggleEmission(BackGlass, _lightsEnabled);
         }
@@ -47,18 +47,23 @@ namespace Off_Road
             foreach (Light light in _backLights)
             {
                 light.enabled = isBraking || _lightsEnabled;
-                light.intensity = isBraking ? _intensityBreakingLights : _intensityBackLights;
+                light.intensity = isBraking 
+                    ? _intensityBreakingLights 
+                    : _intensityBackLights;
             }
 
-            BackGlass.material.SetColor("_EmissionColor", isBraking ? Color.red : _baseColor);
+            BackGlass.material.SetColor("_EmissionColor", isBraking 
+                ? Color.red 
+                : _baseColor);
+            
             ToggleEmission(BackGlass, isBraking || _lightsEnabled);
         }
 
-        void ToggleLights(Light[] lights, bool state)
+        void ToggleLights(Light[] lights)
         {
             foreach (Light light in lights)
             {
-                light.enabled = state;
+                light.enabled = _lightsEnabled;
             }
         }
 

@@ -5,15 +5,15 @@ namespace Off_Road
 {
     public class FuelLevelUI : MonoBehaviour
     {
-        [SerializeField] private Image _fuelLevel;
-        [SerializeField] private CarTank _carTank;
+        [SerializeField] Image _fuelLevel;
+        [SerializeField] CarTank _carTank;
 
-        private void OnEnable()
+        void OnEnable()
         {
             _carTank.OnFuelChanged += UpdateFuelUI;
         }
 
-        private void OnDisable()
+        void OnDisable()
         {
             _carTank.OnFuelChanged -= UpdateFuelUI;
         }
@@ -22,8 +22,5 @@ namespace Off_Road
         {
             _fuelLevel.fillAmount = fuelValue;
         }
-
     }
-
-
 }
