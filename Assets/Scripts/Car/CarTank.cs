@@ -35,7 +35,7 @@ namespace Off_Road
             OnFuelChanged?.Invoke(CurrentFuel/MaxFuel);
         }
 
-        void Refuel(float value)
+        public void Refuel(float value)
         {
             CurrentFuel += value;
             CurrentFuel = Mathf.Clamp(CurrentFuel, 0f, MaxFuel);

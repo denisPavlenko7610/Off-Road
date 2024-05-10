@@ -1,0 +1,284 @@
+fileFormatVersion: 2
+guid: cbef776595bc07f4da353942cca45156
+ModelImporter:
+  serializedVersion: 22200
+  internalIDToNameTable: []
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Cokebottle
+    second: {fileID: 2100000, guid: b6f4e329aa0d4884eb05f159e4ff2ef5, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: blinn1
+    second: {fileID: 2100000, guid: aad975aa41574e944930980967264a2f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: fenceUV_horizontalPosts
+    second: {fileID: 2100000, guid: 771ae5493de80ef48b336e60e1265267, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: fenceUV_verticalPosts
+    second: {fileID: 2100000, guid: 317bbdd1d9086d244af154be1668cb84, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: gasHavenSignUV_arrow
+    second: {fileID: 2100000, guid: b648b5499b06cd845a2e44446022674b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: gasHavenSignUV_mainSigns
+    second: {fileID: 2100000, guid: 6f1833762f58c8f48affe8ea72ccdd11, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: gasHavenSignUV_posts
+    second: {fileID: 2100000, guid: fc00d9b0a5075c0478d43303c0bae6b3, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: gasStationUV_cementPosts
+    second: {fileID: 2100000, guid: f39988d0fd7431e48b9f0cedfb9d6c32, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: gasStationUV_doorAndRoof
+    second: {fileID: 2100000, guid: 7b13e63aaa5ad8942a549eb6dc3df9ca, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: gasStationUV_doors
+    second: {fileID: 2100000, guid: 14dfcd37bd99b1e46a2d75ab26d20fc3, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: gasStationUV_ground
+    second: {fileID: 2100000, guid: ae30c0d2796703c4fb625b4a314d0ae9, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: gasStationUV_mainBuilding
+    second: {fileID: 2100000, guid: 8adf513ae359dd0499119144f17ec0c4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: gasStationUV_pumpRoof
+    second: {fileID: 2100000, guid: 374c2d75aaee553449830f30ac2c07dd, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: gasStationUV_roofDetail
+    second: {fileID: 2100000, guid: 43c66ea74d11e0941bdd3258693646fc, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: gasStationUV_roofSupports
+    second: {fileID: 2100000, guid: 67f8b80c3bcb51b46a45f8c65f41b435, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: gasStationUV_sign
+    second: {fileID: 2100000, guid: 7f5776d178b24304b89b9ccba66185d0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: gasStationUV_smallPosts
+    second: {fileID: 2100000, guid: 0f359acd202bc2a4e8f0f61acfe31ec6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: gasStationUV_windowFrame
+    second: {fileID: 2100000, guid: 04ca26fdce6d5684eaffb710a7df5ab2, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: lambert1
+    second: {fileID: 2100000, guid: 7f0bdaf2ca455bc449b517fb9ead2c0f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: lambert2
+    second: {fileID: 2100000, guid: 2c2b2adcc56e46b439a3449e706f7d35, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: largeRock
+    second: {fileID: 2100000, guid: 4e14f7b9dfa3c5f4a8c6cc10c8ff02de, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: mediumRock01
+    second: {fileID: 2100000, guid: 6a322f6061507d04abdc044ee03dab61, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: mediumRock02
+    second: {fileID: 2100000, guid: dc20207308f0ec442aaef0f346a53c56, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: pumpBody
+    second: {fileID: 2100000, guid: 02331c564104e4a46a2555ac0db91f43, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: pumpHandle
+    second: {fileID: 2100000, guid: b0b9488fc9ba83a4aafdeb58a5cfae28, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: pumpTubeEnds
+    second: {fileID: 2100000, guid: 9767afe1018ba834f9e0fea0c76c541e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: pumpTubeHook
+    second: {fileID: 2100000, guid: f054f42769b21ff4697ac1d039382954, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: sodaBottle
+    second: {fileID: 2100000, guid: 7622f5733a9bc3b47834052a479bfd22, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: tire
+    second: {fileID: 2100000, guid: ce6a8787e3a29284e92d9422f53a724c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: triangleRock01
+    second: {fileID: 2100000, guid: 0623452155799ef4abb0726f32be1c8d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: triangleRock02
+    second: {fileID: 2100000, guid: 6bea4a5d107e2014c86599e989ef3f77, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: tube
+    second: {fileID: 2100000, guid: 61e066d279ab6bc4291677071944c398, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: windows
+    second: {fileID: 2100000, guid: 2209aeeb0c8ea6a45978f2c7f79213fa, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: woodPlanks_singlePlanks
+    second: {fileID: 2100000, guid: 1bc631f53a16c5445b1ab693bb13cf6b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: woodPlanks_stackedPlanks
+    second: {fileID: 2100000, guid: 4ce98c00ba4357b4786f388571fcc4b1, type: 2}
+  materials:
+    materialImportMode: 2
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    removeConstantScaleCurves: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 0
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
+    importPhysicalCameras: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    nodeNameCollisionStrategy: 1
+    fileIdsGeneration: 2
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    keepQuads: 0
+    weldVertices: 1
+    bakeAxisConversion: 0
+    preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    optimizeBones: 1
+    meshOptimizationFlags: -1
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVMarginMethod: 1
+    secondaryUVMinLightmapResolution: 40
+    secondaryUVMinObjectScale: 1
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    strictVertexDataChecks: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  referencedClips: []
+  importAnimation: 1
+  humanDescription:
+    serializedVersion: 3
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    globalScale: 1
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 1
+  animationType: 2
+  humanoidOversampling: 1
+  avatarSetup: 0
+  addHumanoidExtraRootOnlyWhenUsingAvatar: 1
+  importBlendShapeDeformPercent: 1
+  remapMaterialsIfMaterialImportModeIsNone: 0
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
