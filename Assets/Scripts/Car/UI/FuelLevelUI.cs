@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Off_Road
+namespace Off_Road.Car.UI
 {
     public class FuelLevelUI : MonoBehaviour
     {

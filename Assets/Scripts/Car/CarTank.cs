@@ -1,30 +1,25 @@
 using System;
 using UnityEngine;
 
-namespace Off_Road
+namespace Off_Road.Car
 {
     public class CarTank : MonoBehaviour
     {
-        [SerializeField] float _maxFuel = 100f;
-        [SerializeField] float _currentFuel;
+        [field:SerializeField]
+        public float MaxFuel { get; set; } = 100f;
+        
+        [field:SerializeField]
+        public float CurrentFuel { get; set; }
+        
         [SerializeField] float _fuelConsumptionRate = 1f;
 
         public Action<float> OnFuelChanged;
         public Action OnTriggeredRefuel;
-        public float MaxFuel
-        {
-            get { return _maxFuel; }
-        }
-
-        public float CurrentFuel
-        {
-            get { return _currentFuel; }
-        }
 
         void Start()
         {
-            _currentFuel = _maxFuel;
-            _currentFuel = PlayerPrefs.GetFloat("_fuelLevel");
+            CurrentFuel = MaxFuel;
+            CurrentFuel = PlayerPrefs.GetFloat("_fuelLevel");
         }
 
         private void Update()
@@ -35,9 +30,9 @@ namespace Off_Road
 
         void FixedUpdate()
         {
-            updateFuelLevel();
+            UpdateFuelLevel();
         }
-        void updateFuelLevel()
+        void UpdateFuelLevel()
         {
             ConsumeFuel(_fuelConsumptionRate * Time.deltaTime);
             if (CurrentFuel <= 0f)
@@ -46,15 +41,15 @@ namespace Off_Road
 
         void ConsumeFuel(float value)
         {
-            _currentFuel -= value;
-            _currentFuel = Mathf.Clamp(CurrentFuel, 0f, MaxFuel);
+            CurrentFuel -= value;
+            CurrentFuel = Mathf.Clamp(CurrentFuel, 0f, MaxFuel);
             OnFuelChanged?.Invoke(CurrentFuel / MaxFuel);
         }
 
         public void Refuel(float value)
         {
-            _currentFuel += value;
-            _currentFuel = Mathf.Clamp(CurrentFuel, 0f, MaxFuel);
+            CurrentFuel += value;
+            CurrentFuel = Mathf.Clamp(CurrentFuel, 0f, MaxFuel);
             OnFuelChanged?.Invoke(CurrentFuel / MaxFuel);
         }
     }
