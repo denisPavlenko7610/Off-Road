@@ -1,20 +1,12 @@
 ﻿using Dythervin.AutoAttach;
-using Off_Road.Car.Enums;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static Off_Road.Car.Car;
 using Random = UnityEngine.Random;
 
 namespace Off_Road.Car
 {
-    public enum GearState
-    {
-        Neutral,
-        Running,
-        CheckingChange,
-        Changing
-    };
-
     [RequireComponent(typeof(Rigidbody))]
     public class CarController : MonoBehaviour
     {

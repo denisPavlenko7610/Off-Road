@@ -1,6 +1,6 @@
 ﻿using Dythervin.AutoAttach;
-using Off_Road.Car.Enums;
 using UnityEngine;
+using static Off_Road.Car.Car;
 
 namespace Off_Road.Car
 {
