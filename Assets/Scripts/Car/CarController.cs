@@ -61,8 +61,8 @@ namespace Off_Road.Car
         void FixedUpdate()
         {
             Steer();
-            Accelerate();
             ApplyBrake();
+            Accelerate();
             UpdateWheelPoses();
         }
 
@@ -80,12 +80,16 @@ namespace Off_Road.Car
 
         void ApplyBrake()
         {
-            if (_verticalInput < 0.1f)
-                return;
-
             foreach (Wheel wheel in _wheels)
             {
-                wheel.WheelCollider.brakeTorque = brakeForce * 0.7f;
+                if (_verticalInput < Mathf.Epsilon)
+                {
+                    wheel.WheelCollider.brakeTorque = 0;
+                }
+                else
+                {
+                    wheel.WheelCollider.brakeTorque = brakeForce;
+                }
             }
         }
 
@@ -120,14 +124,14 @@ namespace Off_Road.Car
                     case GearState.Neutral:
                         {
                             _clutch = 0;
-                            if (Mathf.Abs(_verticalInput) < 0)
+                            if (Mathf.Abs(_verticalInput) > Mathf.Epsilon)
                             {
                                 _gearState = GearState.Running;
                             }
                             break;
                         }
                     default:
-                        _clutch = Input.GetKey(KeyCode.LeftShift)
+                        _clutch = Input.GetKey(KeyCode.RightShift)
                             ? 0
                             : Mathf.Lerp(_clutch, 1, Time.deltaTime);
                         break;
@@ -171,20 +175,28 @@ namespace Off_Road.Car
         float CalculateTorque()
         {
             float currentTorque = 0;
-            if (_RPM < _idleRPM + _idleRPMLimit && _verticalInput == 0 && _currentGear == 0)
+            
+            if (_RPM < _idleRPM + _idleRPMLimit 
+                && _verticalInput == -0 
+                && _currentGear == 0)
             {
                 _gearState = GearState.Neutral;
             }
             
-            if (_clutch < 0.1f)
+            if (_clutch < Mathf.Epsilon)
             {
-                _RPM = Mathf.Lerp(_RPM, Mathf.Max(_idleRPM, _redLine * _verticalInput) + Random.Range(-_randomAdditinalRPM, _randomAdditinalRPM), Time.deltaTime);
+                _RPM = Mathf.Lerp(_RPM, Mathf.Max(_idleRPM, _redLine * _verticalInput) 
+                    + Random.Range(-_randomAdditinalRPM, _randomAdditinalRPM), Time.deltaTime);
             }
             else
             {
-                wheelRPM = Mathf.Abs((_wheels[0].WheelCollider.rpm + _wheels[1].WheelCollider.rpm) / 2f) * _gearRatios[_currentGear] * _differentialRatio;
-                _RPM = Mathf.Lerp(_RPM, Mathf.Max(_idleRPM - 100, wheelRPM), Time.deltaTime * 3f);
-                currentTorque = (_hpToRPMCurve.Evaluate(_RPM / _redLine) * motorForce / _RPM) * _gearRatios[_currentGear] * _differentialRatio * 5252f * _clutch;
+                wheelRPM = Mathf.Abs((_wheels[0].WheelCollider.rpm + _wheels[1].WheelCollider.rpm) / 2f) 
+                    * _gearRatios[_currentGear] * _differentialRatio;
+                
+                _RPM = Mathf.Lerp(_RPM, Mathf.Max(_idleRPM - _idleRPM / 2f, wheelRPM), Time.deltaTime * 3f);
+                
+                currentTorque = (_hpToRPMCurve.Evaluate(_RPM / _redLine) * motorForce / _RPM) 
+                    * _gearRatios[_currentGear] * _differentialRatio * 5252f * _clutch;
             }
             
             return currentTorque;
@@ -192,6 +204,11 @@ namespace Off_Road.Car
 
         void AccelerateWheels(List<Wheel> wheels)
         {
+            if (_verticalInput > Mathf.Epsilon)
+            {
+                return;
+            }
+            
             float currentTorque = CalculateTorque();
             if (_gearState == GearState.Neutral)
             {
@@ -200,7 +217,7 @@ namespace Off_Road.Car
             
             foreach (Wheel wheel in wheels)
             {
-                _speed = wheel.WheelCollider.attachedRigidbody.velocity.magnitude * 3.6f; // convert to km/h
+                _speed = ConvertMToKM(wheel.WheelCollider.attachedRigidbody.velocity.magnitude);
                 
                 if (_speed < _maxSpeedPerGear[_currentGear])
                 {
@@ -212,6 +229,8 @@ namespace Off_Road.Car
                 }
             }
         }
+
+        float ConvertMToKM(float value) => value * 3.6f;
 
         void UpdateWheelPoses()
         {

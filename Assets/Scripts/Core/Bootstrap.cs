@@ -13,7 +13,7 @@ namespace Off_Road.Core
         {
 
 #if UNITY_EDITOR
-            Debug.logger.logEnabled = true;
+            Debug.unityLogger.logEnabled = true;
 #else
             Debug.logger.logEnabled = false;
 #endif

@@ -4,7 +4,7 @@ namespace Off_Road.Car
 {
     public class Saver : MonoBehaviour
     {
-        [SerializeField] CarTank _carTank;
+        CarTank _carTank;
 
         private void Start()
         {
