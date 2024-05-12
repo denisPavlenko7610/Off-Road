@@ -1,25 +1,33 @@
 ﻿using System.Collections;
 using UnityEngine;
 
-namespace Off_Road
+namespace Off_Road.Car
 {
     public class GasStationRefuel : MonoBehaviour
     {
         [SerializeField] float _timeToRefuel = 2f;
-        [SerializeField] CarTank _carTank;
-
+        
+        CarTank _carTank;
         bool _isTanking;
 
         void OnTriggerEnter(Collider other)
         {
-            if (other.TryGetComponent(out CarTank _Tank))
-            {
-                _carTank = _Tank;
-                _carTank.OnTriggeredRefuel += StartCoroutineRefuel;
-            }
+            SubscribeOnRefuelInput(other);
+        }
+        void SubscribeOnRefuelInput(Collider other)
+        {
+            if (!other.TryGetComponent(out CarTank _Tank))
+                return;
+            
+            _carTank = _Tank;
+            _carTank.OnTriggeredRefuel += StartCoroutineRefuel;
         }
 
-        private void OnTriggerExit(Collider other)
+        void OnTriggerExit(Collider other)
+        {
+            UnsubscribeOnRefuelInput();
+        }
+        void UnsubscribeOnRefuelInput()
         {
             if (_carTank != null)
                 _carTank.OnTriggeredRefuel -= StartCoroutineRefuel;
@@ -36,15 +44,17 @@ namespace Off_Road
                 _carTank.Refuel(refuelValuePerSecond * Time.deltaTime);
                 yield return null;
             }
+            
             _isTanking = false;
             Debug.Log("Refuel is completed!");
         }
 
         void StartCoroutineRefuel()
         {
-            if (!_isTanking)
-                StartCoroutine(Refuel());
-
+            if (_isTanking)
+                return;
+            
+            StartCoroutine(Refuel());
         }
     }
 }

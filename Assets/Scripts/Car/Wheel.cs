@@ -1,8 +1,8 @@
 ﻿using Dythervin.AutoAttach;
-using Enums;
+using Off_Road.Car.Enums;
 using UnityEngine;
 
-namespace Off_Road
+namespace Off_Road.Car
 {
     public class Wheel : MonoBehaviour
     {

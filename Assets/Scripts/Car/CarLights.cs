@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Off_Road
+namespace Off_Road.Car
 {
     public class CarLights : MonoBehaviour
     {

@@ -1401,7 +1401,7 @@ GameObject:
   - component: {fileID: 8814791993116156006}
   m_Layer: 0
   m_Name: body
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1993,6 +1993,7 @@ GameObject:
   - component: {fileID: 1327393976631247793}
   - component: {fileID: 1832964450400461280}
   - component: {fileID: 317142640544380230}
+  - component: {fileID: 6589124550776975184}
   - component: {fileID: 2578362972019747711}
   m_Layer: 0
   m_Name: cutlass
@@ -2119,7 +2120,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0adb86c65f753c43aaae437fb019017, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _fuelConsumptionRate: 1
+  <MaxFuel>k__BackingField: 100
+  <CurrentFuel>k__BackingField: 100
+  _fuelConsumptionRate: 2
 --- !u!114 &317142640544380230
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2134,6 +2137,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _fuelLevel: {fileID: 0}
   _carTank: {fileID: 1832964450400461280}
+--- !u!114 &6589124550776975184
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8544743893330582834}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b74df9d2c99458ea0f27c438d10b682, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!65 &2578362972019747711
 BoxCollider:
   m_ObjectHideFlags: 0

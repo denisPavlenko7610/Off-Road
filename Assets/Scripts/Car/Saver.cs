@@ -1,8 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-namespace Off_Road
+namespace Off_Road.Car
 {
     public class Saver : MonoBehaviour
     {
