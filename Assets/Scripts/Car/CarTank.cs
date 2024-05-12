@@ -11,15 +11,8 @@ namespace Off_Road
 
         public Action<float> OnFuelChanged;
         public Action OnTriggeredRefuel;
-        public float MaxFuel
-        {
-            get { return _maxFuel; }
-        }
-
-        public float CurrentFuel
-        {
-            get { return _currentFuel; }
-        }
+        public float MaxFuel { get { return _maxFuel; } }
+        public float CurrentFuel { get { return _currentFuel; } }
 
         void Start()
         {
