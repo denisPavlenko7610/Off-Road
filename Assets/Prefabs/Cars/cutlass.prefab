@@ -1993,6 +1993,7 @@ GameObject:
   - component: {fileID: 1327393976631247793}
   - component: {fileID: 1832964450400461280}
   - component: {fileID: 317142640544380230}
+  - component: {fileID: 2578362972019747711}
   m_Layer: 0
   m_Name: cutlass
   m_TagString: Untagged
@@ -2118,9 +2119,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0adb86c65f753c43aaae437fb019017, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxFuel: 100
   _fuelConsumptionRate: 1
-  _currentFuel: 0
 --- !u!114 &317142640544380230
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2135,6 +2134,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _fuelLevel: {fileID: 0}
   _carTank: {fileID: 1832964450400461280}
+--- !u!65 &2578362972019747711
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8544743893330582834}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.7612485, y: 0.55842376, z: 4.8909025}
+  m_Center: {x: 0.00018465437, y: -0.15365231, z: 2.6063972}
 --- !u!1 &8560594469158311084
 GameObject:
   m_ObjectHideFlags: 0

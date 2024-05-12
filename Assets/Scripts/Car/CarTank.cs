@@ -5,17 +5,33 @@ namespace Off_Road
 {
     public class CarTank : MonoBehaviour
     {
-        [field:SerializeField] float MaxFuel { get; } = 100f;
+        [SerializeField] float _maxFuel = 100f;
+        [SerializeField] float _currentFuel;
         [SerializeField] float _fuelConsumptionRate = 1f;
-        
-        float CurrentFuel { get; set; }
+
+        public Action<float> OnFuelChanged;
+        public Action OnTriggeredRefuel;
+        public float MaxFuel
+        {
+            get { return _maxFuel; }
+        }
+
+        public float CurrentFuel
+        {
+            get { return _currentFuel; }
+        }
 
         void Start()
         {
-            CurrentFuel = MaxFuel;
+            _currentFuel = _maxFuel;
+            _currentFuel = PlayerPrefs.GetFloat("_fuelLevel");
         }
 
-        public Action <float> OnFuelChanged;
+        private void Update()
+        {
+            if (Input.GetKeyDown(KeyCode.F))
+                OnTriggeredRefuel?.Invoke();
+        }
 
         void FixedUpdate()
         {
@@ -30,15 +46,15 @@ namespace Off_Road
 
         void ConsumeFuel(float value)
         {
-            CurrentFuel -= value;
-            CurrentFuel = Mathf.Clamp(CurrentFuel, 0f, MaxFuel);
-            OnFuelChanged?.Invoke(CurrentFuel/MaxFuel);
+            _currentFuel -= value;
+            _currentFuel = Mathf.Clamp(CurrentFuel, 0f, MaxFuel);
+            OnFuelChanged?.Invoke(CurrentFuel / MaxFuel);
         }
 
         public void Refuel(float value)
         {
-            CurrentFuel += value;
-            CurrentFuel = Mathf.Clamp(CurrentFuel, 0f, MaxFuel);
+            _currentFuel += value;
+            _currentFuel = Mathf.Clamp(CurrentFuel, 0f, MaxFuel);
             OnFuelChanged?.Invoke(CurrentFuel / MaxFuel);
         }
     }
