@@ -1489,7 +1489,7 @@ MeshCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 5
   m_Convex: 1
   m_CookingOptions: 30
@@ -1995,6 +1995,7 @@ GameObject:
   - component: {fileID: 317142640544380230}
   - component: {fileID: 6589124550776975184}
   - component: {fileID: 2578362972019747711}
+  - component: {fileID: 1172631520503133486}
   m_Layer: 0
   m_Name: cutlass
   m_TagString: Untagged
@@ -2065,7 +2066,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 1
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 2
 --- !u!114 &543450651912912010
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2078,14 +2079,68 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d55ff9d8131c41aca73986f6e9e5f965, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  driveUnit: 2
-  Wheels:
+  _driveUnit: 0
+  _wheels:
   - {fileID: 162704467}
   - {fileID: 1692425783}
   - {fileID: 793779245}
   - {fileID: 91725315}
+  _speed: 0
   maxSteerAngle: 30
-  motorForce: 500
+  motorForce: 100
+  brakeForce: 70000
+  _maxSpeedPerGear:
+  - 0
+  - 30
+  - 60
+  - 90
+  - 120
+  - 180
+  _RPM: 0
+  _idleRPM: 800
+  _currentGear: 0
+  _gearRatios:
+  - 3
+  - 2.5
+  - 2
+  - 1.5
+  - 1
+  - 0.8
+  _differentialRatio: 4
+  _hpToRPMCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 1
+      outSlope: 1
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.9000573
+      value: 0.9000573
+      inSlope: 0.34312207
+      outSlope: 0.34312207
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 1
+    - serializedVersion: 3
+      time: 0.9927361
+      value: 0.015701473
+      inSlope: -9.54216
+      outSlope: -9.54216
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  _redLine: 6500
 --- !u!114 &1327393976631247793
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2170,6 +2225,18 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.7612485, y: 0.55842376, z: 4.8909025}
   m_Center: {x: 0.00018465437, y: -0.15365231, z: 2.6063972}
+--- !u!114 &1172631520503133486
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8544743893330582834}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b74df9d2c99458ea0f27c438d10b682, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8560594469158311084
 GameObject:
   m_ObjectHideFlags: 0
