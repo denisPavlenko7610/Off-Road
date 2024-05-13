@@ -6,7 +6,7 @@ namespace Off_Road.Car
     public class GasStationRefuel : MonoBehaviour
     {
         [SerializeField] float _timeToRefuel = 2f;
-        
+
         CarTank _carTank;
         bool _isTanking;
 
@@ -18,7 +18,7 @@ namespace Off_Road.Car
         {
             if (!other.TryGetComponent(out CarTank _Tank))
                 return;
-            
+
             _carTank = _Tank;
             _carTank.OnTriggeredRefuel += StartCoroutineRefuel;
         }
@@ -44,7 +44,7 @@ namespace Off_Road.Car
                 _carTank.Refuel(refuelValuePerSecond * Time.deltaTime);
                 yield return null;
             }
-            
+
             _isTanking = false;
             Debug.Log("Refuel is completed!");
         }
@@ -53,8 +53,9 @@ namespace Off_Road.Car
         {
             if (_isTanking)
                 return;
-            
+
             StartCoroutine(Refuel());
         }
+
     }
 }
