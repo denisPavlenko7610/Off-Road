@@ -5,19 +5,24 @@ namespace Off_Road.Car
 {
     public class CarTank : MonoBehaviour
     {
-        [field:SerializeField]
+        [field: SerializeField]
         public float MaxFuel { get; set; } = 100f;
-        
-        [field:SerializeField]
+
+        [field: SerializeField]
         public float CurrentFuel { get; set; }
-        
-        [SerializeField] float _fuelConsumptionRate = 1f;
+
+        [field: SerializeField]
+        public float FuelConsumptionRateAtStart { get; set; }
+
+        [field: SerializeField]
+        public float FuelConsumptionRate { get; set; } = 1f;
 
         public Action<float> OnFuelChanged;
         public Action OnTriggeredRefuel;
 
         void Start()
         {
+            FuelConsumptionRateAtStart = FuelConsumptionRate;
             CurrentFuel = MaxFuel;
             CurrentFuel = PlayerPrefs.GetFloat("_fuelLevel");
         }
@@ -34,7 +39,7 @@ namespace Off_Road.Car
         }
         void UpdateFuelLevel()
         {
-            ConsumeFuel(_fuelConsumptionRate * Time.deltaTime);
+            ConsumeFuel(FuelConsumptionRate * Time.deltaTime);
             if (CurrentFuel <= 0f)
                 Debug.Log("Out of fuel");
         }
@@ -53,4 +58,7 @@ namespace Off_Road.Car
             OnFuelChanged?.Invoke(CurrentFuel / MaxFuel);
         }
     }
+
+
 }
+
