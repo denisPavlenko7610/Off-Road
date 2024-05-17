@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f91878a5e89a0e4f9d3d14e7f7f7275, type: 3}
   m_Name: CarCutlass
   m_EditorClassIdentifier: 
-  maxSteerAngle: 30
-  <MotorForce>k__BackingField: 100
-  brakeForce: 50000
-  _idleRPM: 800
-  _redLine: 6500
+  MaxSteerAngle: 30
+  MotorForce: 100
+  BrakeForce: 50000
+  IdleRPM: 800
+  RedLine: 6500

@@ -10,7 +10,7 @@ namespace Off_Road.Car
     [RequireComponent(typeof(Rigidbody))]
     public class CarController : MonoBehaviour
     {
-        [SerializeField] CarInfoScriptableObject _carCutlass;
+        [SerializeField] CarInfoSO _carCutlass;
         [SerializeField] InputManager _inputManager;
         [SerializeField] DriveUnit _driveUnit;
         [SerializeField, Attach(Attach.Child)] List<Wheel> _wheels;
@@ -74,11 +74,11 @@ namespace Off_Road.Car
 
         void Start()
         {
-            _maxSteerAngle = _carCutlass.maxSteerAngle;
+            _maxSteerAngle = _carCutlass.MaxSteerAngle;
             MotorForce = _carCutlass.MotorForce;
-            _brakeForce = _carCutlass.brakeForce;
-            _idleRPM = _carCutlass._idleRPM;
-            _redLine = _carCutlass._redLine;
+            _brakeForce = _carCutlass.BrakeForce;
+            _idleRPM = _carCutlass.IdleRPM;
+            _redLine = _carCutlass.RedLine;
 
             MotorForceAtStart = MotorForce;
         }

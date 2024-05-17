@@ -2085,7 +2085,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _carCutlass: {fileID: 11400000, guid: eb3042579b1af22419f92d3c565b7d60, type: 2}
   _inputManager: {fileID: 5450158252534428625}
-  _driveUnit: 0
+  _driveUnit: 2
   _wheels:
   - {fileID: 162704467}
   - {fileID: 1692425783}
@@ -2093,9 +2093,6 @@ MonoBehaviour:
   - {fileID: 91725315}
   _speed: 0
   _maxSteerAngle: 0
-  <MotorForce>k__BackingField: 100
-  <MotorForceAtStart>k__BackingField: 0
-  _brakeForce: 0
   _maxSpeedPerGear:
   - 0
   - 30
@@ -2114,6 +2111,8 @@ MonoBehaviour:
   - 1
   - 0.8
   _differentialRatio: 4
+  _redLine: 6500
+  _brakeForce: 0
   _hpToRPMCurve:
     serializedVersion: 2
     m_Curve:
@@ -2147,7 +2146,8 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  _redLine: 6500
+  <MotorForce>k__BackingField: 100
+  <MotorForceAtStart>k__BackingField: 0
 --- !u!114 &1327393976631247793
 MonoBehaviour:
   m_ObjectHideFlags: 0
