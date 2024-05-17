@@ -5,28 +5,19 @@ namespace Off_Road.Car
     public class CarLights : MonoBehaviour
     {
         [SerializeField] Light[] _frontLights;
-        [SerializeField] Light[] _backLights;
 
         [SerializeField] Renderer FrontGlass;
         [SerializeField] Renderer BackGlass;
 
-        [SerializeField] float _intensityBreakingLights = 10f;
-        [SerializeField] float _intensityBackLights = 5f;
+        [SerializeField] float _intensityBreakingLights = 50f;
+        [SerializeField] float _intensityBackLights = 20f;
 
         bool _lightsEnabled;
-        Color _baseColor;
-        
-        const string EMISSION = "_EMISSION";
-
-        void Start()
-        {
-            _baseColor = BackGlass.material.GetColor("_EmissionColor");
-        }
 
         void Update()
         {
             HandleLightToggle();
-            HandleBrakingLights();
+            HandleLights();
         }
 
         void HandleLightToggle()
@@ -36,27 +27,40 @@ namespace Off_Road.Car
             
             _lightsEnabled = !_lightsEnabled;
             ToggleLights(_frontLights);
-            ToggleLights(_backLights);
-            ToggleEmission(FrontGlass, _lightsEnabled);
-            ToggleEmission(BackGlass, _lightsEnabled);
         }
 
-        void HandleBrakingLights()
+        void HandleLights()
         {
             bool isBraking = Input.GetAxis("Vertical") < 0;
-            foreach (Light light in _backLights)
+            
+            if (_lightsEnabled)
             {
-                light.enabled = isBraking || _lightsEnabled;
-                light.intensity = isBraking 
-                    ? _intensityBreakingLights 
-                    : _intensityBackLights;
+                FrontGlass.material.EnableKeyword("_EMISSION");
+                FrontGlass.material.SetColor("_EmissiveColor", Color.cyan * _intensityBackLights);
+            }
+            else
+            {
+                FrontGlass.material.DisableKeyword("_EMISSION");
+                FrontGlass.material.SetColor("_EmissiveColor", Color.cyan * 0);
             }
 
-            BackGlass.material.SetColor("_EmissionColor", isBraking 
-                ? Color.red 
-                : _baseColor);
+            if (isBraking)
+            {
+                BackGlass.material.EnableKeyword("_EMISSION");
+                BackGlass.material.SetColor("_EmissiveColor", Color.red * _intensityBreakingLights);
+                return;
+            }
             
-            ToggleEmission(BackGlass, isBraking || _lightsEnabled);
+            if (_lightsEnabled)
+            {
+                BackGlass.material.EnableKeyword("_EMISSION");
+                BackGlass.material.SetColor("_EmissiveColor", Color.red * _intensityBackLights);
+            }
+            else
+            {
+                BackGlass.material.DisableKeyword("_EMISSION");
+                BackGlass.material.SetColor("_EmissiveColor", Color.red * 0);
+            }
         }
 
         void ToggleLights(Light[] lights)
@@ -64,18 +68,6 @@ namespace Off_Road.Car
             foreach (Light light in lights)
             {
                 light.enabled = _lightsEnabled;
-            }
-        }
-
-        void ToggleEmission(Renderer renderer, bool state)
-        {
-            if (state)
-            {
-                renderer.material.EnableKeyword(EMISSION);
-            }
-            else
-            {
-                renderer.material.DisableKeyword(EMISSION);
             }
         }
     }
