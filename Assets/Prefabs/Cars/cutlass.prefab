@@ -2083,71 +2083,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d55ff9d8131c41aca73986f6e9e5f965, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _carCutlass: {fileID: 11400000, guid: eb3042579b1af22419f92d3c565b7d60, type: 2}
-  _inputManager: {fileID: 5450158252534428625}
+  <CarInfoSO>k__BackingField: {fileID: 11400000, guid: c66b4cc2503544c4d8bb24615494db04, type: 2}
+  carInput: {fileID: 5450158252534428625}
   _driveUnit: 2
   _wheels:
   - {fileID: 162704467}
   - {fileID: 1692425783}
   - {fileID: 793779245}
   - {fileID: 91725315}
-  _speed: 0
-  _maxSteerAngle: 0
-  _maxSpeedPerGear:
-  - 0
-  - 30
-  - 60
-  - 90
-  - 120
-  - 180
-  _RPM: 0
-  _idleRPM: 800
-  _currentGear: 0
-  _gearRatios:
-  - 3
-  - 2.5
-  - 2
-  - 1.5
-  - 1
-  - 0.8
-  _differentialRatio: 4
-  _redLine: 6500
-  _brakeForce: 0
-  _hpToRPMCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 1
-      outSlope: 1
-      tangentMode: 34
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 0.9000573
-      value: 0.9000573
-      inSlope: 0.34312207
-      outSlope: 0.34312207
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 1
-    - serializedVersion: 3
-      time: 0.9927361
-      value: 0.015701473
-      inSlope: -9.54216
-      outSlope: -9.54216
-      tangentMode: 34
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  <MotorForce>k__BackingField: 100
-  <MotorForceAtStart>k__BackingField: 0
 --- !u!114 &1327393976631247793
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2182,10 +2125,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0adb86c65f753c43aaae437fb019017, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <MaxFuel>k__BackingField: 100
-  <CurrentFuel>k__BackingField: 100
-  <FuelConsumptionRateAtStart>k__BackingField: 0
-  <FuelConsumptionRate>k__BackingField: 1
+  <MaxFuel>k__BackingField: 40
+  <CurrentFuel>k__BackingField: 40
+  <FuelConsumptionRate>k__BackingField: 0.1
 --- !u!114 &317142640544380230
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2262,6 +2204,7 @@ MonoBehaviour:
   _particleSystems:
   - {fileID: 3179446434019031745}
   - {fileID: 248377079587373481}
+  carInput: {fileID: 5450158252534428625}
 --- !u!114 &5450158252534428625
 MonoBehaviour:
   m_ObjectHideFlags: 0

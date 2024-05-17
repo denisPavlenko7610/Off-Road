@@ -4231,9 +4231,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
+  m_Maskable: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -4290,8 +4290,8 @@ MonoBehaviour:
   m_enableKerning: 1
   m_enableExtraPadding: 0
   checkPaddingRequired: 0
-  m_isRichText: 1
-  m_parseCtrlCharacters: 1
+  m_isRichText: 0
+  m_parseCtrlCharacters: 0
   m_isOrthographic: 1
   m_isCullingEnabled: 0
   m_horizontalMapping: 0
@@ -4300,7 +4300,7 @@ MonoBehaviour:
   m_geometrySortingOrder: 0
   m_IsTextObjectScaleStatic: 0
   m_VertexBufferAutoSizeReduction: 0
-  m_useMaxVisibleDescender: 1
+  m_useMaxVisibleDescender: 0
   m_pageToDisplay: 1
   m_margin: {x: 0.14471436, y: 0.083099365, z: 0.27844238, w: 0}
   m_isUsingLegacyAnimationComponent: 0
@@ -10865,9 +10865,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
+  m_Maskable: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -10926,8 +10926,8 @@ MonoBehaviour:
   m_enableKerning: 1
   m_enableExtraPadding: 0
   checkPaddingRequired: 0
-  m_isRichText: 1
-  m_parseCtrlCharacters: 1
+  m_isRichText: 0
+  m_parseCtrlCharacters: 0
   m_isOrthographic: 1
   m_isCullingEnabled: 0
   m_horizontalMapping: 0
@@ -10936,9 +10936,9 @@ MonoBehaviour:
   m_geometrySortingOrder: 0
   m_IsTextObjectScaleStatic: 0
   m_VertexBufferAutoSizeReduction: 0
-  m_useMaxVisibleDescender: 1
+  m_useMaxVisibleDescender: 0
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 0.14471436, y: 0.083099365, z: 0.27844238, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -14519,17 +14519,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b74df9d2c99458ea0f27c438d10b682, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &543450651912912016 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5450158252534428625, guid: 07367046f69a6bd4ca239463acf3089c, type: 3}
-  m_PrefabInstance: {fileID: 8814791991329110784}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 940073808416e5c4999547f2171b5de4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &543450651912912025 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 9069924056913414024, guid: 07367046f69a6bd4ca239463acf3089c, type: 3}
@@ -14687,34 +14676,6 @@ PrefabInstance:
       propertyPath: _fuelLevel
       value: 
       objectReference: {fileID: 252460887}
-    - target: {fileID: 543450651912912010, guid: 07367046f69a6bd4ca239463acf3089c, type: 3}
-      propertyPath: carInput
-      value: 
-      objectReference: {fileID: 543450651912912016}
-    - target: {fileID: 543450651912912010, guid: 07367046f69a6bd4ca239463acf3089c, type: 3}
-      propertyPath: _carInfoSO
-      value: 
-      objectReference: {fileID: 11400000, guid: c66b4cc2503544c4d8bb24615494db04, type: 2}
-    - target: {fileID: 543450651912912010, guid: 07367046f69a6bd4ca239463acf3089c, type: 3}
-      propertyPath: <CarInfoSO>k__BackingField
-      value: 
-      objectReference: {fileID: 11400000, guid: c66b4cc2503544c4d8bb24615494db04, type: 2}
-    - target: {fileID: 557237450306845817, guid: 07367046f69a6bd4ca239463acf3089c, type: 3}
-      propertyPath: carInput
-      value: 
-      objectReference: {fileID: 543450651912912016}
-    - target: {fileID: 1832964450400461280, guid: 07367046f69a6bd4ca239463acf3089c, type: 3}
-      propertyPath: <MaxFuel>k__BackingField
-      value: 40
-      objectReference: {fileID: 0}
-    - target: {fileID: 1832964450400461280, guid: 07367046f69a6bd4ca239463acf3089c, type: 3}
-      propertyPath: <CurrentFuel>k__BackingField
-      value: 40
-      objectReference: {fileID: 0}
-    - target: {fileID: 1832964450400461280, guid: 07367046f69a6bd4ca239463acf3089c, type: 3}
-      propertyPath: <FuelConsumptionRate>k__BackingField
-      value: 0.1
-      objectReference: {fileID: 0}
     - target: {fileID: 8544743893330582834, guid: 07367046f69a6bd4ca239463acf3089c, type: 3}
       propertyPath: m_Name
       value: cutlass
