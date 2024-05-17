@@ -10,6 +10,8 @@ namespace Off_Road.Car
     [RequireComponent(typeof(Rigidbody))]
     public class CarController : MonoBehaviour
     {
+        [SerializeField] CarInfoSO _carCutlass;
+        [SerializeField] InputManager _inputManager;
         [SerializeField] DriveUnit _driveUnit;
         [SerializeField, Attach(Attach.Child)] List<Wheel> _wheels;
 
@@ -17,35 +19,31 @@ namespace Off_Road.Car
         List<Wheel> _rearWheels = new();
 
         [SerializeField] float _speed;
-        [SerializeField] float maxSteerAngle = 30f;
+        [SerializeField] float _maxSteerAngle;
+        [SerializeField] float[] _maxSpeedPerGear;
+        [SerializeField] float _RPM;
+        [SerializeField] float _idleRPM;
+        [SerializeField] int _currentGear;
+        [SerializeField] float[] _gearRatios;
+        [SerializeField] float _differentialRatio = 4f;
+        [SerializeField] float _redLine;
+        [SerializeField] float _brakeForce;
+        [SerializeField] AnimationCurve _hpToRPMCurve;
 
         [field: SerializeField]
-        public float MotorForce { get; set; } = 100f;
+        public float MotorForce { get; set; }
 
         [field: SerializeField]
         public float MotorForceAtStart { get; set; }
-
-        [SerializeField] float brakeForce = 50_000f;
 
         float _horizontalInput;
         float _verticalInput;
         float _steeringAngle;
         readonly float _rotateAngle = 180f;
-
-        [SerializeField] float[] _maxSpeedPerGear;
-        [SerializeField] float _RPM;
-        [SerializeField] float _idleRPM = 800f;
-
-        [SerializeField] int _currentGear;
+        bool _isClutchPressed;
         GearState _gearState;
         float _clutch;
-
-        [SerializeField] float[] _gearRatios;
         float wheelRPM;
-        [SerializeField] float _differentialRatio = 4f;
-        [SerializeField] AnimationCurve _hpToRPMCurve;
-        [SerializeField] float _redLine = 6500f;
-
         int _randomAdditinalRPM = 50;
         float _idleRPMLimit = 200f;
 
@@ -53,21 +51,36 @@ namespace Off_Road.Car
         WaitForSeconds _waitForDecreaseGearInS = new WaitForSeconds(0.1f);
         WaitForSeconds _waitForIncreaseGearInS = new WaitForSeconds(0.7f);
 
+        void OnEnable()
+        {
+            _inputManager.OnGetInput += GetInput;
+            _inputManager.OnGetGearInputShiftUp += GetGearInputUp;
+            _inputManager.OnGetGearInputShiftDown += GetGearInputDown;
+            _inputManager.OnClutch += HandleClutch;
+        }
+
+        void OnDisable()
+        {
+            _inputManager.OnGetInput -= GetInput;
+            _inputManager.OnGetGearInputShiftUp -= GetGearInputUp;
+            _inputManager.OnGetGearInputShiftDown -= GetGearInputDown;
+            _inputManager.OnClutch -= HandleClutch;
+        }
+
         void Awake()
         {
             SetupWheels();
         }
 
-        private void Start()
+        void Start()
         {
+            _maxSteerAngle = _carCutlass.MaxSteerAngle;
+            MotorForce = _carCutlass.MotorForce;
+            _brakeForce = _carCutlass.BrakeForce;
+            _idleRPM = _carCutlass.IdleRPM;
+            _redLine = _carCutlass.RedLine;
+
             MotorForceAtStart = MotorForce;
-        }
-
-
-        void Update()
-        {
-            GetInput();
-            GetGearInput();
         }
 
         void FixedUpdate()
@@ -78,19 +91,16 @@ namespace Off_Road.Car
             UpdateWheelPoses();
         }
 
-        void GetGearInput()
+        void GetGearInputUp()
         {
-            if (Input.GetKeyDown(KeyCode.LeftShift))
-            {
-                if (_currentGear < 5)
-                    StartCoroutine(ChangeGear(1));
+            if (_currentGear < 5)
+                StartCoroutine(ChangeGear(1));
+        }
 
-            }
-            if (Input.GetKeyDown(KeyCode.LeftControl))
-            {
-                if (_currentGear > 0)
-                    StartCoroutine(ChangeGear(-1));
-            }
+        void GetGearInputDown()
+        {
+            if (_currentGear > 0)
+                StartCoroutine(ChangeGear(-1));
         }
 
         void ApplyBrake()
@@ -103,7 +113,7 @@ namespace Off_Road.Car
                 }
                 else
                 {
-                    wheel.WheelCollider.brakeTorque = brakeForce;
+                    wheel.WheelCollider.brakeTorque = _brakeForce;
                 }
             }
         }
@@ -123,13 +133,19 @@ namespace Off_Road.Car
             }
         }
 
-        void GetInput()
+        void GetInput(float horizontalInput, float verticalInput)
         {
-            _horizontalInput = Input.GetAxis("Horizontal");
-            _verticalInput = -Input.GetAxis("Vertical");
+            _horizontalInput = horizontalInput;
+            _verticalInput = verticalInput;
 
             CalculateClutch();
         }
+
+        void HandleClutch(bool isClutchPressed)
+        {
+            _isClutchPressed = isClutchPressed;
+        }
+
         void CalculateClutch()
         {
             if (_gearState != GearState.Changing)
@@ -146,7 +162,7 @@ namespace Off_Road.Car
                             break;
                         }
                     default:
-                        _clutch = Input.GetKey(KeyCode.RightShift)
+                        _clutch = _isClutchPressed
                             ? 0
                             : Mathf.Lerp(_clutch, 1, Time.deltaTime);
                         break;
@@ -160,7 +176,7 @@ namespace Off_Road.Car
 
         void Steer()
         {
-            _steeringAngle = maxSteerAngle * _horizontalInput;
+            _steeringAngle = _maxSteerAngle * _horizontalInput;
             foreach (var wheel in _frontWheels)
             {
                 wheel.WheelCollider.steerAngle = _steeringAngle;

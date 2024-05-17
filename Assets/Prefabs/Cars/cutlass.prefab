@@ -1997,6 +1997,7 @@ GameObject:
   - component: {fileID: 2578362972019747711}
   - component: {fileID: 1172631520503133486}
   - component: {fileID: 557237450306845817}
+  - component: {fileID: 5450158252534428625}
   m_Layer: 0
   m_Name: cutlass
   m_TagString: Untagged
@@ -2082,17 +2083,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d55ff9d8131c41aca73986f6e9e5f965, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _driveUnit: 0
+  _carCutlass: {fileID: 11400000, guid: eb3042579b1af22419f92d3c565b7d60, type: 2}
+  _inputManager: {fileID: 5450158252534428625}
+  _driveUnit: 2
   _wheels:
   - {fileID: 162704467}
   - {fileID: 1692425783}
   - {fileID: 793779245}
   - {fileID: 91725315}
   _speed: 0
-  maxSteerAngle: 30
-  <MotorForce>k__BackingField: 100
-  <MotorForceAtStart>k__BackingField: 0
-  brakeForce: 70000
+  _maxSteerAngle: 0
   _maxSpeedPerGear:
   - 0
   - 30
@@ -2111,6 +2111,8 @@ MonoBehaviour:
   - 1
   - 0.8
   _differentialRatio: 4
+  _redLine: 6500
+  _brakeForce: 0
   _hpToRPMCurve:
     serializedVersion: 2
     m_Curve:
@@ -2144,7 +2146,8 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  _redLine: 6500
+  <MotorForce>k__BackingField: 100
+  <MotorForceAtStart>k__BackingField: 0
 --- !u!114 &1327393976631247793
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2256,9 +2259,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _carController: {fileID: 543450651912912010}
   _carTank: {fileID: 1832964450400461280}
-  ParticleSystems:
+  _particleSystems:
   - {fileID: 3179446434019031745}
   - {fileID: 248377079587373481}
+--- !u!114 &5450158252534428625
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8544743893330582834}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 940073808416e5c4999547f2171b5de4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8560594469158311084
 GameObject:
   m_ObjectHideFlags: 0
