@@ -7,7 +7,7 @@ namespace Off_Road
     {
         [SerializeField] CarController _carController;
         [SerializeField] CarTank _carTank;
-        [SerializeField] ParticleSystem[] ParticleSystems;
+        [SerializeField] ParticleSystem[] _particleSystems;
 
         bool _isRunning = true;
 
@@ -15,32 +15,39 @@ namespace Off_Road
         {
             if (Input.GetKeyDown(KeyCode.E) && _isRunning)
             {
-                _carTank.FuelConsumptionRate = 0f;
-                _carController.MotorForce = 0f;
-
-                foreach (ParticleSystem Smoke in ParticleSystems)
-                {
-                    Smoke.Stop();
-                }
-                Debug.Log("Engine is stopped");
-                _isRunning = false;
+                StopEngine();
             }
-
             else if (Input.GetKeyDown(KeyCode.E) && !_isRunning)
             {
-
-                _carController.MotorForce = _carController.MotorForceAtStart;
-                _carTank.FuelConsumptionRate = _carTank.FuelConsumptionRateAtStart;
-
-                foreach (ParticleSystem Smoke in ParticleSystems)
-                {
-                    Smoke.Play();
-                }
-                Debug.Log("Engine is started");
-                _isRunning = true;
+                StartEngine();
             }
         }
-    }
 
+        void StartEngine()
+        {
+            _carController.MotorForce = _carController.MotorForceAtStart;
+            _carTank.FuelConsumptionRate = _carTank.FuelConsumptionRateAtStart;
+
+            foreach (ParticleSystem Smoke in _particleSystems)
+            {
+                Smoke.Play();
+            }
+            Debug.Log("Engine is started");
+            _isRunning = true;
+        }
+
+        void StopEngine()
+        {
+            _carTank.FuelConsumptionRate = 0f;
+            _carController.MotorForce = 0f;
+
+            foreach (ParticleSystem Smoke in _particleSystems)
+            {
+                Smoke.Stop();
+            }
+            Debug.Log("Engine is stopped");
+            _isRunning = false;
+        }
+    }
 }
 
