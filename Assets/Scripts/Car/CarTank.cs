@@ -6,25 +6,27 @@ namespace Off_Road.Car
     public class CarTank : MonoBehaviour
     {
         [field: SerializeField]
-        public float MaxFuel { get; set; } = 100f;
+        public float MaxFuel { get; set; } = 40f;
 
         [field: SerializeField]
         public float CurrentFuel { get; set; }
-
+        
         [field: SerializeField]
-        public float FuelConsumptionRateAtStart { get; set; }
-
-        [field: SerializeField]
-        public float FuelConsumptionRate { get; set; } = 1f;
-
+        public float FuelConsumptionRate { get; set; } = 0.1f;
+        
         public Action<float> OnFuelChanged;
         public Action OnTriggeredRefuel;
 
         void Start()
         {
-            FuelConsumptionRateAtStart = FuelConsumptionRate;
-            CurrentFuel = MaxFuel;
-            CurrentFuel = PlayerPrefs.GetFloat("_fuelLevel");
+            if (PlayerPrefs.HasKey(CarConstants.FUEL_LEVEL_KEY))
+            {
+                CurrentFuel = PlayerPrefs.GetFloat(CarConstants.FUEL_LEVEL_KEY);
+            }
+            else
+            {
+                CurrentFuel = MaxFuel;
+            }
         }
 
         private void Update()
@@ -57,8 +59,14 @@ namespace Off_Road.Car
             CurrentFuel = Mathf.Clamp(CurrentFuel, 0f, MaxFuel);
             OnFuelChanged?.Invoke(CurrentFuel / MaxFuel);
         }
+
+        void OnApplicationQuit()
+        {
+            if (Input.GetKeyDown(KeyCode.K))
+            {
+                PlayerPrefs.SetFloat(CarConstants.FUEL_LEVEL_KEY, CurrentFuel);
+            }
+        }
     }
-
-
 }
 

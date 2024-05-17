@@ -10,42 +10,29 @@ namespace Off_Road.Car
     [RequireComponent(typeof(Rigidbody))]
     public class CarController : MonoBehaviour
     {
-        [SerializeField] CarInfoSO _carCutlass;
-        [SerializeField] InputManager _inputManager;
+        [field:SerializeField] public CarInfoSO CarInfoSO { get; private set; }
+        [SerializeField, Attach] CarInput carInput;
         [SerializeField] DriveUnit _driveUnit;
         [SerializeField, Attach(Attach.Child)] List<Wheel> _wheels;
 
         List<Wheel> _frontWheels = new();
         List<Wheel> _rearWheels = new();
 
+        //temp
         [SerializeField] float _speed;
-        [SerializeField] float _maxSteerAngle;
-        [SerializeField] float[] _maxSpeedPerGear;
         [SerializeField] float _RPM;
-        [SerializeField] float _idleRPM;
         [SerializeField] int _currentGear;
-        [SerializeField] float[] _gearRatios;
-        [SerializeField] float _differentialRatio = 4f;
-        [SerializeField] float _redLine;
-        [SerializeField] float _brakeForce;
-        [SerializeField] AnimationCurve _hpToRPMCurve;
-
-        [field: SerializeField]
-        public float MotorForce { get; set; }
-
-        [field: SerializeField]
-        public float MotorForceAtStart { get; set; }
+        //end temp
+        
+        public float CurrentMotorForce { get; set; }
 
         float _horizontalInput;
         float _verticalInput;
         float _steeringAngle;
-        readonly float _rotateAngle = 180f;
         bool _isClutchPressed;
         GearState _gearState;
         float _clutch;
         float wheelRPM;
-        int _randomAdditinalRPM = 50;
-        float _idleRPMLimit = 200f;
 
         WaitForSeconds _waitForChangeGearInS = new WaitForSeconds(0.5f);
         WaitForSeconds _waitForDecreaseGearInS = new WaitForSeconds(0.1f);
@@ -53,36 +40,25 @@ namespace Off_Road.Car
 
         void OnEnable()
         {
-            _inputManager.OnGetInput += GetInput;
-            _inputManager.OnGetGearInputShiftUp += GetGearInputUp;
-            _inputManager.OnGetGearInputShiftDown += GetGearInputDown;
-            _inputManager.OnClutch += HandleClutch;
+            carInput.OnGetInput += GetInput;
+            carInput.OnGetGearInputShiftUp += GetGearInputUp;
+            carInput.OnGetGearInputShiftDown += GetGearInputDown;
+            carInput.OnClutch += HandleClutch;
         }
 
         void OnDisable()
         {
-            _inputManager.OnGetInput -= GetInput;
-            _inputManager.OnGetGearInputShiftUp -= GetGearInputUp;
-            _inputManager.OnGetGearInputShiftDown -= GetGearInputDown;
-            _inputManager.OnClutch -= HandleClutch;
+            carInput.OnGetInput -= GetInput;
+            carInput.OnGetGearInputShiftUp -= GetGearInputUp;
+            carInput.OnGetGearInputShiftDown -= GetGearInputDown;
+            carInput.OnClutch -= HandleClutch;
         }
 
         void Awake()
         {
             SetupWheels();
         }
-
-        void Start()
-        {
-            _maxSteerAngle = _carCutlass.MaxSteerAngle;
-            MotorForce = _carCutlass.MotorForce;
-            _brakeForce = _carCutlass.BrakeForce;
-            _idleRPM = _carCutlass.IdleRPM;
-            _redLine = _carCutlass.RedLine;
-
-            MotorForceAtStart = MotorForce;
-        }
-
+        
         void FixedUpdate()
         {
             Steer();
@@ -113,7 +89,7 @@ namespace Off_Road.Car
                 }
                 else
                 {
-                    wheel.WheelCollider.brakeTorque = _brakeForce;
+                    wheel.WheelCollider.brakeTorque = CarInfoSO.BrakeForce;
                 }
             }
         }
@@ -176,7 +152,7 @@ namespace Off_Road.Car
 
         void Steer()
         {
-            _steeringAngle = _maxSteerAngle * _horizontalInput;
+            _steeringAngle = CarInfoSO.MaxSteerAngle * _horizontalInput;
             foreach (var wheel in _frontWheels)
             {
                 wheel.WheelCollider.steerAngle = _steeringAngle;
@@ -207,7 +183,7 @@ namespace Off_Road.Car
         {
             float currentTorque = 0;
 
-            if (_RPM < _idleRPM + _idleRPMLimit
+            if (_RPM < CarInfoSO.IdleRPM + CarInfoSO.IdleRPMLimit
                 && _verticalInput == -0
                 && _currentGear == 0)
             {
@@ -216,18 +192,18 @@ namespace Off_Road.Car
 
             if (_clutch < Mathf.Epsilon)
             {
-                _RPM = Mathf.Lerp(_RPM, Mathf.Max(_idleRPM, _redLine * _verticalInput)
-                    + Random.Range(-_randomAdditinalRPM, _randomAdditinalRPM), Time.deltaTime);
+                _RPM = Mathf.Lerp(_RPM, Mathf.Max(CarInfoSO.IdleRPM, CarInfoSO.RedLine * _verticalInput)
+                    + Random.Range(-CarInfoSO.RandomAdditionalRPM, CarInfoSO.RandomAdditionalRPM), Time.deltaTime);
             }
             else
             {
                 wheelRPM = Mathf.Abs((_wheels[0].WheelCollider.rpm + _wheels[1].WheelCollider.rpm) / 2f)
-                    * _gearRatios[_currentGear] * _differentialRatio;
+                    * CarInfoSO.GearRatios[_currentGear] * CarInfoSO.DifferentialRatio;
 
-                _RPM = Mathf.Lerp(_RPM, Mathf.Max(_idleRPM - _idleRPM / 2f, wheelRPM), Time.deltaTime * 3f);
+                _RPM = Mathf.Lerp(_RPM, Mathf.Max(CarInfoSO.IdleRPM - CarInfoSO.IdleRPM / 2f, wheelRPM), Time.deltaTime * 3f);
 
-                currentTorque = (_hpToRPMCurve.Evaluate(_RPM / _redLine) * MotorForce / _RPM)
-                    * _gearRatios[_currentGear] * _differentialRatio * 5252f * _clutch;
+                currentTorque = (CarInfoSO.HpToRPMCurve.Evaluate(_RPM / CarInfoSO.RedLine) * CurrentMotorForce / _RPM)
+                    * CarInfoSO.GearRatios[_currentGear] * CarInfoSO.DifferentialRatio * 5252f * _clutch;
             }
 
             return currentTorque;
@@ -250,7 +226,7 @@ namespace Off_Road.Car
             {
                 _speed = ConvertMToKM(wheel.WheelCollider.attachedRigidbody.velocity.magnitude);
 
-                if (_speed < _maxSpeedPerGear[_currentGear])
+                if (_speed < CarInfoSO.MaxSpeedPerGear[_currentGear])
                 {
                     wheel.WheelCollider.motorTorque = currentTorque * _verticalInput;
                 }
@@ -279,7 +255,7 @@ namespace Off_Road.Car
                 if (wheel.WheelType == WheelType.FL
                     || wheel.WheelType == WheelType.RL)
                 {
-                    wheelTransform.Rotate(Vector3.up, _rotateAngle);
+                    wheelTransform.Rotate(Vector3.up, CarInfoSO.RotateAngle);
                 }
             }
         }
@@ -294,7 +270,7 @@ namespace Off_Road.Car
                     case > 0:
                         {
                             yield return _waitForIncreaseGearInS;
-                            if (_currentGear >= _gearRatios.Length - 1)
+                            if (_currentGear >= CarInfoSO.GearRatios.Length - 1)
                             {
                                 _gearState = GearState.Running;
                                 yield break;
