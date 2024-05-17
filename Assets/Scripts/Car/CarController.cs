@@ -1,4 +1,5 @@
 ﻿using Dythervin.AutoAttach;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,7 +11,11 @@ namespace Off_Road.Car
     [RequireComponent(typeof(Rigidbody))]
     public class CarController : MonoBehaviour
     {
-        [field:SerializeField] public CarInfoSO CarInfoSO { get; private set; }
+        public event Action OnRPMUpdate;
+        public event Action OnSpeedUpdate;
+        public event Action OnGearUpdate;
+
+        [field: SerializeField] public CarInfoSO CarInfoSO { get; private set; }
         [SerializeField, Attach] CarInput carInput;
         [SerializeField] DriveUnit _driveUnit;
         [SerializeField, Attach(Attach.Child)] List<Wheel> _wheels;
@@ -19,11 +24,11 @@ namespace Off_Road.Car
         List<Wheel> _rearWheels = new();
 
         //temp
-        [SerializeField] float _speed;
-        [SerializeField] float _RPM;
-        [SerializeField] int _currentGear;
+        public float SpeedAuto { get; set; }
+        public float RPMEngine { get; set; }
+        public int CurrentGear { get; set; }
         //end temp
-        
+
         public float CurrentMotorForce { get; set; }
 
         float _horizontalInput;
@@ -58,7 +63,7 @@ namespace Off_Road.Car
         {
             SetupWheels();
         }
-        
+
         void FixedUpdate()
         {
             Steer();
@@ -69,13 +74,13 @@ namespace Off_Road.Car
 
         void GetGearInputUp()
         {
-            if (_currentGear < 5)
+            if (CurrentGear < 5)
                 StartCoroutine(ChangeGear(1));
         }
 
         void GetGearInputDown()
         {
-            if (_currentGear > 0)
+            if (CurrentGear > 0)
                 StartCoroutine(ChangeGear(-1));
         }
 
@@ -183,28 +188,30 @@ namespace Off_Road.Car
         {
             float currentTorque = 0;
 
-            if (_RPM < CarInfoSO.IdleRPM + CarInfoSO.IdleRPMLimit
+            if (RPMEngine < CarInfoSO.IdleRPM + CarInfoSO.IdleRPMLimit
                 && _verticalInput == -0
-                && _currentGear == 0)
+                && CurrentGear == 0)
             {
                 _gearState = GearState.Neutral;
             }
 
             if (_clutch < Mathf.Epsilon)
             {
-                _RPM = Mathf.Lerp(_RPM, Mathf.Max(CarInfoSO.IdleRPM, CarInfoSO.RedLine * _verticalInput)
+                RPMEngine = Mathf.Lerp(RPMEngine, Mathf.Max(CarInfoSO.IdleRPM, CarInfoSO.RedLine * _verticalInput)
                     + Random.Range(-CarInfoSO.RandomAdditionalRPM, CarInfoSO.RandomAdditionalRPM), Time.deltaTime);
             }
             else
             {
                 wheelRPM = Mathf.Abs((_wheels[0].WheelCollider.rpm + _wheels[1].WheelCollider.rpm) / 2f)
-                    * CarInfoSO.GearRatios[_currentGear] * CarInfoSO.DifferentialRatio;
+                    * CarInfoSO.GearRatios[CurrentGear] * CarInfoSO.DifferentialRatio;
 
-                _RPM = Mathf.Lerp(_RPM, Mathf.Max(CarInfoSO.IdleRPM - CarInfoSO.IdleRPM / 2f, wheelRPM), Time.deltaTime * 3f);
+                RPMEngine = Mathf.Lerp(RPMEngine, Mathf.Max(CarInfoSO.IdleRPM - CarInfoSO.IdleRPM / 2f, wheelRPM), Time.deltaTime * 3f);
 
-                currentTorque = (CarInfoSO.HpToRPMCurve.Evaluate(_RPM / CarInfoSO.RedLine) * CurrentMotorForce / _RPM)
-                    * CarInfoSO.GearRatios[_currentGear] * CarInfoSO.DifferentialRatio * 5252f * _clutch;
+                currentTorque = (CarInfoSO.HpToRPMCurve.Evaluate(RPMEngine / CarInfoSO.RedLine) * CurrentMotorForce / RPMEngine)
+                    * CarInfoSO.GearRatios[CurrentGear] * CarInfoSO.DifferentialRatio * 5252f * _clutch;
             }
+
+            OnRPMUpdate?.Invoke();//--------------------------------------
 
             return currentTorque;
         }
@@ -224,9 +231,9 @@ namespace Off_Road.Car
 
             foreach (Wheel wheel in wheels)
             {
-                _speed = ConvertMToKM(wheel.WheelCollider.attachedRigidbody.velocity.magnitude);
+                SpeedAuto = ConvertMToKM(wheel.WheelCollider.attachedRigidbody.velocity.magnitude);
 
-                if (_speed < CarInfoSO.MaxSpeedPerGear[_currentGear])
+                if (SpeedAuto < CarInfoSO.MaxSpeedPerGear[CurrentGear])
                 {
                     wheel.WheelCollider.motorTorque = currentTorque * _verticalInput;
                 }
@@ -235,6 +242,7 @@ namespace Off_Road.Car
                     wheel.WheelCollider.motorTorque = 0;
                 }
             }
+            OnSpeedUpdate?.Invoke();//-------------------------
         }
 
         float ConvertMToKM(float value) => value * 3.6f;
@@ -263,14 +271,14 @@ namespace Off_Road.Car
         IEnumerator ChangeGear(int gearChange)
         {
             _gearState = GearState.CheckingChange;
-            if (_currentGear + gearChange >= 0)
+            if (CurrentGear + gearChange >= 0)
             {
                 switch (gearChange)
                 {
                     case > 0:
                         {
                             yield return _waitForIncreaseGearInS;
-                            if (_currentGear >= CarInfoSO.GearRatios.Length - 1)
+                            if (CurrentGear >= CarInfoSO.GearRatios.Length - 1)
                             {
                                 _gearState = GearState.Running;
                                 yield break;
@@ -281,7 +289,7 @@ namespace Off_Road.Car
                         {
                             yield return _waitForDecreaseGearInS;
 
-                            if (_currentGear <= 0)
+                            if (CurrentGear <= 0)
                             {
                                 _gearState = GearState.Running;
                                 yield break;
@@ -292,11 +300,13 @@ namespace Off_Road.Car
                 _gearState = GearState.Changing;
                 yield return _waitForChangeGearInS;
 
-                _currentGear += gearChange;
+                CurrentGear += gearChange;
             }
 
             if (_gearState != GearState.Neutral)
                 _gearState = GearState.Running;
+
+            OnGearUpdate?.Invoke();//-------------------------------------
         }
     }
 }

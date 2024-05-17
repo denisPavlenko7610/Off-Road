@@ -1,3 +1,4 @@
+using Dythervin.AutoAttach;
 using Off_Road.Car;
 using UnityEngine;
 
@@ -8,32 +9,39 @@ namespace Off_Road
         [SerializeField] CarController _carController;
         [SerializeField] CarTank _carTank;
         [SerializeField] ParticleSystem[] _particleSystems;
+        [SerializeField, Attach] CarInput carInput;
+
+        float _startFuelConsumptionRate;
 
         bool _isRunning;
 
         void Start()
         {
+            _startFuelConsumptionRate = _carTank.FuelConsumptionRate;
             StopEngine();
         }
 
-        private void Update()
+        private void OnEnable()
         {
-            if (Input.GetKeyDown(KeyCode.E))
-            {
-                if (_isRunning)
-                {
-                    StopEngine();
-                }
-                else
-                {
-                    StartEngine();
-                }
-            }
+            carInput.OnSetEngineState += ToggleSetStateEngine;
+        }
+
+        private void OnDisable()
+        {
+            carInput.OnSetEngineState -= ToggleSetStateEngine;
+        }
+
+        void ToggleSetStateEngine()
+        {
+            if (_isRunning)
+                StopEngine();
+            else
+                StartEngine();
         }
 
         void StartEngine()
         {
-            SetEngineState(_carController.CarInfoSO.MotorForce, _carTank.FuelConsumptionRate, true, "Engine is started");
+            SetEngineState(_carController.CarInfoSO.MotorForce, _startFuelConsumptionRate, true, "Engine is started");
         }
 
         void StopEngine()

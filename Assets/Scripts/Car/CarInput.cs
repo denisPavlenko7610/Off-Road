@@ -9,6 +9,7 @@ namespace Off_Road
         public event Action OnGetGearInputShiftUp;
         public event Action OnGetGearInputShiftDown;
         public event Action<bool> OnClutch;
+        public event Action OnSetEngineState;
 
         void Update()
         {
@@ -16,6 +17,9 @@ namespace Off_Road
         }
         void GetInput()
         {
+            if (Input.GetKeyDown(KeyCode.E))
+                OnSetEngineState?.Invoke();
+
             if (Input.GetKeyDown(KeyCode.LeftShift))
                 OnGetGearInputShiftUp?.Invoke();
 
@@ -24,11 +28,11 @@ namespace Off_Road
 
             bool isClutchPressed = Input.GetKey(KeyCode.RightShift);
             OnClutch?.Invoke(isClutchPressed);
-            
+
             float horizontalInput = Input.GetAxis("Horizontal");
             float verticalInput = -Input.GetAxis("Vertical");
 
-            if (Mathf.Approximately(horizontalInput, 0) 
+            if (Mathf.Approximately(horizontalInput, 0)
                 && Mathf.Approximately(verticalInput, 0))
                 return;
 

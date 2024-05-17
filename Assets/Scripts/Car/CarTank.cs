@@ -13,7 +13,7 @@ namespace Off_Road.Car
         
         [field: SerializeField]
         public float FuelConsumptionRate { get; set; } = 0.1f;
-        
+
         public Action<float> OnFuelChanged;
         public Action OnTriggeredRefuel;
 
