@@ -7,8 +7,8 @@ TerrainLayer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: layer_SandAlbedodirt_na513b4f607ad2805
-  m_DiffuseTexture: {fileID: 2800000, guid: bfd675cc0db1d4656b75dc6d6ba91142, type: 3}
-  m_NormalMapTexture: {fileID: 2800000, guid: 348507cb808ba76498ddf7101f190588, type: 3}
+  m_DiffuseTexture: {fileID: 2800000, guid: 521869df0bcccd5499d44f399c1ac4af, type: 3}
+  m_NormalMapTexture: {fileID: 2800000, guid: 34cf6c37fb1d8ae419fc8e588bea68eb, type: 3}
   m_MaskMapTexture: {fileID: 0}
   m_TileSize: {x: 15, y: 15}
   m_TileOffset: {x: 0, y: 0}

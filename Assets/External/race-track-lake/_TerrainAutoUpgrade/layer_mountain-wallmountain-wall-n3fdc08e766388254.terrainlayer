@@ -7,8 +7,8 @@ TerrainLayer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: layer_mountain-wallmountain-wall-n3fdc08e766388254
-  m_DiffuseTexture: {fileID: 2800000, guid: ac957e33a9cdede44838b2b2d0765fcd, type: 3}
-  m_NormalMapTexture: {fileID: 2800000, guid: 514d3c2153379ab4ba6d69ff97d01396, type: 3}
+  m_DiffuseTexture: {fileID: 2800000, guid: e60cc72aab1371141a51994da42a8798, type: 3}
+  m_NormalMapTexture: {fileID: 2800000, guid: 6effd7f0e5bc4e941b3f5548328af7a6, type: 3}
   m_MaskMapTexture: {fileID: 0}
   m_TileSize: {x: 30, y: 30}
   m_TileOffset: {x: 0, y: 0}
