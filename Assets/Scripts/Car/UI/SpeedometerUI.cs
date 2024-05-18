@@ -13,8 +13,9 @@ namespace Off_Road
         [SerializeField] float _maxRpmArrowAngle;
 
         [SerializeField] TextMeshProUGUI _textSpeed;
-        [SerializeField] RectTransform _arrow;
         [SerializeField] TextMeshProUGUI _textGear;
+
+        [SerializeField] RectTransform _arrow;
 
         private void OnEnable()
         {

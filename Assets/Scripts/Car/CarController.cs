@@ -211,7 +211,7 @@ namespace Off_Road.Car
                     * CarInfoSO.GearRatios[CurrentGear] * CarInfoSO.DifferentialRatio * 5252f * _clutch;
             }
 
-            OnRPMUpdate?.Invoke();//--------------------------------------
+            OnRPMUpdate?.Invoke();
 
             return currentTorque;
         }
@@ -242,7 +242,7 @@ namespace Off_Road.Car
                     wheel.WheelCollider.motorTorque = 0;
                 }
             }
-            OnSpeedUpdate?.Invoke();//-------------------------
+            OnSpeedUpdate?.Invoke();
         }
 
         float ConvertMToKM(float value) => value * 3.6f;
@@ -306,7 +306,7 @@ namespace Off_Road.Car
             if (_gearState != GearState.Neutral)
                 _gearState = GearState.Running;
 
-            OnGearUpdate?.Invoke();//-------------------------------------
+            OnGearUpdate?.Invoke();
         }
     }
 }
