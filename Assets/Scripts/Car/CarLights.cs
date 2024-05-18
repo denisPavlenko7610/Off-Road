@@ -6,8 +6,8 @@ namespace Off_Road.Car
     {
         [SerializeField] Light[] _frontLights;
 
-        [SerializeField] Renderer FrontGlass;
-        [SerializeField] Renderer BackGlass;
+        [SerializeField] Renderer _frontGlass;
+        [SerializeField] Renderer _backGlass;
 
         [SerializeField] float _intensityBreakingLights = 50f;
         [SerializeField] float _intensityBackLights = 20f;
@@ -22,52 +22,41 @@ namespace Off_Road.Car
 
         void HandleLightToggle()
         {
-            if (!Input.GetKeyDown(KeyCode.L))
-                return;
-            
-            _lightsEnabled = !_lightsEnabled;
-            ToggleLights(_frontLights);
+            if (Input.GetKeyDown(KeyCode.L))
+            {
+                _lightsEnabled = !_lightsEnabled;
+                ToggleLights(_frontLights, _lightsEnabled);
+            }
         }
 
         void HandleLights()
         {
             bool isBraking = Input.GetAxis("Vertical") < 0;
-            
-            if (_lightsEnabled)
-            {
-                FrontGlass.material.EnableKeyword("_EMISSION");
-                FrontGlass.material.SetColor("_EmissiveColor", Color.cyan * _intensityBackLights);
-            }
-            else
-            {
-                FrontGlass.material.DisableKeyword("_EMISSION");
-                FrontGlass.material.SetColor("_EmissiveColor", Color.cyan * 0);
-            }
 
             if (isBraking)
+                SetEmission(_backGlass, true, Color.red, _intensityBreakingLights);
+            else
+                SetEmission(_backGlass, _lightsEnabled, Color.red, _intensityBackLights);
+
+        }
+
+        void ToggleLights(Light[] lights, bool state)
+        {
+            foreach (Light light in lights)
+                light.enabled = state;
+        }
+
+        void SetEmission(Renderer glass, bool enableEmission, Color color, float intensity)
+        {
+            if (enableEmission)
             {
-                BackGlass.material.EnableKeyword("_EMISSION");
-                BackGlass.material.SetColor("_EmissiveColor", Color.red * _intensityBreakingLights);
-                return;
-            }
-            
-            if (_lightsEnabled)
-            {
-                BackGlass.material.EnableKeyword("_EMISSION");
-                BackGlass.material.SetColor("_EmissiveColor", Color.red * _intensityBackLights);
+                glass.material.EnableKeyword(ShaderConstants.EmissionKeyword);
+                glass.material.SetColor(ShaderConstants.EmissiveColor, color * intensity);
             }
             else
             {
-                BackGlass.material.DisableKeyword("_EMISSION");
-                BackGlass.material.SetColor("_EmissiveColor", Color.red * 0);
-            }
-        }
-
-        void ToggleLights(Light[] lights)
-        {
-            foreach (Light light in lights)
-            {
-                light.enabled = _lightsEnabled;
+                glass.material.DisableKeyword(ShaderConstants.EmissionKeyword);
+                glass.material.SetColor(ShaderConstants.EmissiveColor, color * 0);
             }
         }
     }
