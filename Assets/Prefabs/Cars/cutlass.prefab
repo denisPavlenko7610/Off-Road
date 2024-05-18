@@ -1967,6 +1967,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e36886499cbf20c4c857c52f36f75de1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _carInput: {fileID: 5450158252534428625}
   _frontLights:
   - {fileID: 4631360022517245065}
   - {fileID: 7433350671628355312}

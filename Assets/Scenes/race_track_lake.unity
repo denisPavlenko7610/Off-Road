@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 428566102}
-  m_IndirectSpecularColor: {r: 837.1217, g: 924.3136, b: 1020.7423, a: 1}
+  m_IndirectSpecularColor: {r: 837.10754, g: 924.2672, b: 1020.70325, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2598,7 +2598,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5887b71295c24a16bcaa2e6239b92be0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _car: {fileID: 543450651912912015}
+  _car: {fileID: 543450651912912029}
   _camera: {fileID: 315162675}
   _distance: 8.45
   _height: 3.1
@@ -9610,11 +9610,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: 87403507033f0034eab7ba172e32535d, type: 3}
   m_PrefabInstance: {fileID: 1367172702}
   m_PrefabAsset: {fileID: 0}
---- !u!23 &1384186994 stripped
-MeshRenderer:
-  m_CorrespondingSourceObject: {fileID: 3355915708565375050, guid: 07367046f69a6bd4ca239463acf3089c, type: 3}
-  m_PrefabInstance: {fileID: 8814791991329110784}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1408523578
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13214,11 +13209,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: c92bea14e5c4591408be760558da7b90, type: 3}
   m_PrefabInstance: {fileID: 1959547351}
   m_PrefabAsset: {fileID: 0}
---- !u!23 &2004064224 stripped
-MeshRenderer:
-  m_CorrespondingSourceObject: {fileID: 4859503060438172120, guid: 07367046f69a6bd4ca239463acf3089c, type: 3}
-  m_PrefabInstance: {fileID: 8814791991329110784}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2008379211
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14584,9 +14574,14 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: c92bea14e5c4591408be760558da7b90, type: 3}
   m_PrefabInstance: {fileID: 2144965177}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &543450651912912015 stripped
+--- !u!4 &543450651912912025 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 9069924056913414024, guid: 07367046f69a6bd4ca239463acf3089c, type: 3}
+  m_PrefabInstance: {fileID: 8814791991329110784}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &543450651912912029 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1172631520503133486, guid: 07367046f69a6bd4ca239463acf3089c, type: 3}
+  m_CorrespondingSourceObject: {fileID: 6589124550776975184, guid: 07367046f69a6bd4ca239463acf3089c, type: 3}
   m_PrefabInstance: {fileID: 8814791991329110784}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
@@ -14595,11 +14590,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b74df9d2c99458ea0f27c438d10b682, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!4 &543450651912912025 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 9069924056913414024, guid: 07367046f69a6bd4ca239463acf3089c, type: 3}
-  m_PrefabInstance: {fileID: 8814791991329110784}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1150955877799223889
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14741,22 +14731,6 @@ PrefabInstance:
       propertyPath: _fuelLevel
       value: 
       objectReference: {fileID: 252460887}
-    - target: {fileID: 1327393976631247793, guid: 07367046f69a6bd4ca239463acf3089c, type: 3}
-      propertyPath: _backGlass
-      value: 
-      objectReference: {fileID: 2004064224}
-    - target: {fileID: 1327393976631247793, guid: 07367046f69a6bd4ca239463acf3089c, type: 3}
-      propertyPath: _frontGlass
-      value: 
-      objectReference: {fileID: 1384186994}
-    - target: {fileID: 1327393976631247793, guid: 07367046f69a6bd4ca239463acf3089c, type: 3}
-      propertyPath: _intensityBackLights
-      value: 30
-      objectReference: {fileID: 0}
-    - target: {fileID: 1327393976631247793, guid: 07367046f69a6bd4ca239463acf3089c, type: 3}
-      propertyPath: _intensityBreakingLights
-      value: 70
-      objectReference: {fileID: 0}
     - target: {fileID: 8544743893330582834, guid: 07367046f69a6bd4ca239463acf3089c, type: 3}
       propertyPath: m_Name
       value: cutlass

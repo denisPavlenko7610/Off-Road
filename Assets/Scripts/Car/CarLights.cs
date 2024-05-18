@@ -4,6 +4,7 @@ namespace Off_Road.Car
 {
     public class CarLights : MonoBehaviour
     {
+        [SerializeField] CarInput _carInput;
         [SerializeField] Light[] _frontLights;
 
         [SerializeField] Renderer _frontGlass;
@@ -14,30 +15,35 @@ namespace Off_Road.Car
 
         bool _lightsEnabled;
 
-        void Update()
+        void OnEnable()
         {
-            HandleLightToggle();
-            HandleLights();
+            _carInput.OnSetStateLights += SetStateLights;
+            _carInput.OnPressBrake += BrakeLightsOn;
+            _carInput.OnUnpressBrake += BrakeLightsOff;
         }
 
-        void HandleLightToggle()
+        void OnDisable()
         {
-            if (Input.GetKeyDown(KeyCode.L))
-            {
-                _lightsEnabled = !_lightsEnabled;
-                ToggleLights(_frontLights, _lightsEnabled);
-            }
+            _carInput.OnSetStateLights -= SetStateLights;
+            _carInput.OnPressBrake -= BrakeLightsOn;
+            _carInput.OnUnpressBrake -= BrakeLightsOff;
         }
 
-        void HandleLights()
+        void SetStateLights()
         {
-            bool isBraking = Input.GetAxis("Vertical") < 0;
+            _lightsEnabled = !_lightsEnabled;
+            ToggleLights(_frontLights, _lightsEnabled);
+            SetEmission(_frontGlass, _lightsEnabled, Color.cyan, _intensityBackLights);
+        }
 
-            if (isBraking)
-                SetEmission(_backGlass, true, Color.red, _intensityBreakingLights);
-            else
-                SetEmission(_backGlass, _lightsEnabled, Color.red, _intensityBackLights);
+        void BrakeLightsOn()
+        {
+            SetEmission(_backGlass, true, Color.red, _intensityBreakingLights);
+        }
 
+        void BrakeLightsOff()
+        {
+            SetEmission(_backGlass, _lightsEnabled, Color.red, _intensityBackLights);
         }
 
         void ToggleLights(Light[] lights, bool state)
