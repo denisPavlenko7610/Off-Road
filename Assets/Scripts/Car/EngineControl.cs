@@ -1,6 +1,7 @@
 using Dythervin.AutoAttach;
 using Off_Road.Car;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Off_Road
 {
@@ -9,7 +10,7 @@ namespace Off_Road
         [SerializeField] CarController _carController;
         [SerializeField] CarTank _carTank;
         [SerializeField] ParticleSystem[] _particleSystems;
-        [SerializeField, Attach] CarInput carInput;
+        [SerializeField, Attach] CarInput _carInput;
 
         float _startFuelConsumptionRate;
 
@@ -23,12 +24,12 @@ namespace Off_Road
 
         private void OnEnable()
         {
-            carInput.OnSetEngineState += ToggleSetStateEngine;
+            _carInput.OnSetEngineState += ToggleSetStateEngine;
         }
 
         private void OnDisable()
         {
-            carInput.OnSetEngineState -= ToggleSetStateEngine;
+            _carInput.OnSetEngineState -= ToggleSetStateEngine;
         }
 
         void ToggleSetStateEngine()

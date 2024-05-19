@@ -36,13 +36,13 @@ namespace Off_Road
             if (_arrow != null)
                 _arrow.localEulerAngles = new Vector3(0, 0, Mathf.Lerp(_minRpmArrowAngle, _maxRpmArrowAngle, _carController.RPMEngine / CarInfoSO.RedLine));
         }
-
+        
         void UpdateSpeedometer()
         {
             if (_textSpeed != null)
                 _textSpeed.text = ((int)_carController.SpeedAuto) + " km/h";
         }
-
+        
         void UpdateGearUI()
         {
             _textGear.text = _carController.CurrentGear.ToString();
