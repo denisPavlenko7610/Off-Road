@@ -1,5 +1,12 @@
 {
   "dependencies": {
+    "com.rdragon.tools": {
+      "version": "https://github.com/denisPavlenko7610/RDTools.git",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "ecebf1d7858c2efd0eaac8ac62c7232df1a86bec"
+    },
     "com.unity.2d.sprite": {
       "version": "1.0.0",
       "depth": 0,

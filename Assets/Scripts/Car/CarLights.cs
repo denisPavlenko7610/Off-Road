@@ -1,10 +1,11 @@
+using RDTools.AutoAttach;
 using UnityEngine;
 
 namespace Off_Road.Car
 {
     public class CarLights : MonoBehaviour
     {
-        [SerializeField] CarInput _carInput;
+        [SerializeField, Attach] CarInput _carInput;
         [SerializeField] Light[] _frontLights;
 
         [SerializeField] Renderer _frontGlass;

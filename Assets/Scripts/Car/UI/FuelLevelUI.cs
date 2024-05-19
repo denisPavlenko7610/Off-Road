@@ -1,3 +1,4 @@
+using RDTools.AutoAttach;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -6,7 +7,7 @@ namespace Off_Road.Car.UI
     public class FuelLevelUI : MonoBehaviour
     {
         [SerializeField] Image _fuelLevel;
-        [SerializeField] CarTank _carTank;
+        [SerializeField, Attach] CarTank _carTank;
 
         void OnEnable()
         {

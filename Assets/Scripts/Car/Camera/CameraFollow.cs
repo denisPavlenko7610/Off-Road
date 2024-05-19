@@ -1,4 +1,4 @@
-﻿using Dythervin.AutoAttach;
+﻿using RDTools.AutoAttach;
 using UnityEngine;
 
 namespace Off_Road.Car.Camera
@@ -15,14 +15,9 @@ namespace Off_Road.Car.Camera
         [SerializeField] float _zoomRatio = 0.5f;
         [SerializeField] float _defaultFOV = 60f;
 
-        Rigidbody _carRigidbody;
+        [SerializeField] Rigidbody _carRigidbody;
         Vector3 rotationVector;
         float _forwardDegree = 180;
-
-        void Awake()
-        {
-            _carRigidbody = _car.GetComponent<Rigidbody>();
-        }
 
         void FixedUpdate()
         {

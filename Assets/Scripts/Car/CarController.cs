@@ -1,4 +1,4 @@
-﻿using Dythervin.AutoAttach;
+﻿using RDTools.AutoAttach;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -22,12 +22,10 @@ namespace Off_Road.Car
 
         List<Wheel> _frontWheels = new();
         List<Wheel> _rearWheels = new();
-
-        //temp
-        public float SpeedAuto { get; set; }
-        public float RPMEngine { get; set; }
-        public int CurrentGear { get; set; }
-        //end temp
+        
+        public float SpeedAuto { get; private set; }
+        public float RPMEngine { get; private set; }
+        public int CurrentGear { get; private set; }
 
         public float CurrentMotorForce { get; set; }
 
@@ -37,7 +35,7 @@ namespace Off_Road.Car
         bool _isClutchPressed;
         GearState _gearState;
         float _clutch;
-        float wheelRPM;
+        float _wheelRPM;
 
         WaitForSeconds _waitForChangeGearInS = new WaitForSeconds(0.5f);
         WaitForSeconds _waitForDecreaseGearInS = new WaitForSeconds(0.1f);
@@ -74,7 +72,7 @@ namespace Off_Road.Car
 
         void GetGearInputUp()
         {
-            if (CurrentGear < 5)
+            if (CurrentGear < CarInfoSO.GearRatios.Length - 1)
                 StartCoroutine(ChangeGear(1));
         }
 
@@ -202,10 +200,10 @@ namespace Off_Road.Car
             }
             else
             {
-                wheelRPM = Mathf.Abs((_wheels[0].WheelCollider.rpm + _wheels[1].WheelCollider.rpm) / 2f)
+                _wheelRPM = Mathf.Abs((_wheels[0].WheelCollider.rpm + _wheels[1].WheelCollider.rpm) / 2f)
                     * CarInfoSO.GearRatios[CurrentGear] * CarInfoSO.DifferentialRatio;
 
-                RPMEngine = Mathf.Lerp(RPMEngine, Mathf.Max(CarInfoSO.IdleRPM - CarInfoSO.IdleRPM / 2f, wheelRPM), Time.deltaTime * 3f);
+                RPMEngine = Mathf.Lerp(RPMEngine, Mathf.Max(CarInfoSO.IdleRPM - CarInfoSO.IdleRPM / 2f, _wheelRPM), Time.deltaTime * 3f);
 
                 currentTorque = (CarInfoSO.HpToRPMCurve.Evaluate(RPMEngine / CarInfoSO.RedLine) * CurrentMotorForce / RPMEngine)
                     * CarInfoSO.GearRatios[CurrentGear] * CarInfoSO.DifferentialRatio * 5252f * _clutch;

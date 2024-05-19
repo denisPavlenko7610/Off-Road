@@ -1,4 +1,5 @@
 ﻿using Off_Road.Car;
+using RDTools.AutoAttach;
 using TMPro;
 using UnityEngine;
 
@@ -6,8 +7,8 @@ namespace Off_Road
 {
     public class SpeedometerUI : MonoBehaviour
     {
-        [SerializeField] CarController _carController;
-        [field: SerializeField] public CarInfoSO CarInfoSO { get; private set; }
+        [SerializeField, Attach(Attach.Scene)] CarController _carController;
+        [SerializeField] CarInfoSO _carInfoSO;
 
         [SerializeField] float _minRpmArrowAngle;
         [SerializeField] float _maxRpmArrowAngle;
@@ -17,35 +18,50 @@ namespace Off_Road
 
         [SerializeField] RectTransform _arrow;
 
-        private void OnEnable()
+        public CarInfoSO CarInfoSO { get => _carInfoSO; }
+
+        void OnEnable()
+        {
+            SubscribeToCarControllerEvents();
+        }
+
+        void OnDisable()
+        {
+            UnsubscribeFromCarControllerEvents();
+        }
+
+        void SubscribeToCarControllerEvents()
         {
             _carController.OnRPMUpdate += UpdateRPM;
-            _carController.OnSpeedUpdate+= UpdateSpeedometer;
+            _carController.OnSpeedUpdate += UpdateSpeedometer;
             _carController.OnGearUpdate += UpdateGearUI;
         }
 
-        private void OnDisable()
+        void UnsubscribeFromCarControllerEvents()
         {
             _carController.OnRPMUpdate -= UpdateRPM;
             _carController.OnSpeedUpdate -= UpdateSpeedometer;
             _carController.OnGearUpdate -= UpdateGearUI;
         }
 
-        void UpdateRPM()
+        private void UpdateRPM()
         {
-            if (_arrow != null)
-                _arrow.localEulerAngles = new Vector3(0, 0, Mathf.Lerp(_minRpmArrowAngle, _maxRpmArrowAngle, _carController.RPMEngine / CarInfoSO.RedLine));
+            if (_arrow == null)
+                return;
+            
+            float rpmRatio = _carController.RPMEngine / CarInfoSO.RedLine;
+            float arrowAngle = Mathf.Lerp(_minRpmArrowAngle, _maxRpmArrowAngle, rpmRatio);
+            _arrow.localEulerAngles = new Vector3(0, 0, arrowAngle);
         }
-        
+
         void UpdateSpeedometer()
         {
-            if (_textSpeed != null)
-                _textSpeed.text = ((int)_carController.SpeedAuto) + " km/h";
+            if (_textSpeed == null)
+                return;
+            
+            _textSpeed.text = $"{(int)_carController.SpeedAuto}\n km/h";
         }
-        
-        void UpdateGearUI()
-        {
-            _textGear.text = _carController.CurrentGear.ToString();
-        }
+
+        void UpdateGearUI() => _textGear.text = _carController.CurrentGear.ToString();
     }
 }

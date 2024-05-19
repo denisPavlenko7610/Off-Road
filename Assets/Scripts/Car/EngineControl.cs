@@ -1,14 +1,13 @@
-using Dythervin.AutoAttach;
 using Off_Road.Car;
+using RDTools.AutoAttach;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace Off_Road
 {
     public class EngineControl : MonoBehaviour
     {
-        [SerializeField] CarController _carController;
-        [SerializeField] CarTank _carTank;
+        [SerializeField, Attach] CarController _carController;
+        [SerializeField, Attach] CarTank _carTank;
         [SerializeField] ParticleSystem[] _particleSystems;
         [SerializeField, Attach] CarInput _carInput;
 
@@ -22,12 +21,12 @@ namespace Off_Road
             StopEngine();
         }
 
-        private void OnEnable()
+        void OnEnable()
         {
             _carInput.OnSetEngineState += ToggleSetStateEngine;
         }
 
-        private void OnDisable()
+        void OnDisable()
         {
             _carInput.OnSetEngineState -= ToggleSetStateEngine;
         }

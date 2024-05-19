@@ -23,35 +23,52 @@ namespace Off_Road
 
         void GetInput()
         {
+            EngineState();
+            MovementInput();
+            StateLights();
+            GearInput();
+            ClutchInput();
+        }
+
+        void EngineState()
+        {
             if (Input.GetKeyDown(KeyCode.E))
                 OnSetEngineState?.Invoke();
+        }
+
+        void MovementInput()
+        {
+            float horizontalInput = Input.GetAxisRaw("Horizontal");
+            float verticalInput = -Input.GetAxisRaw("Vertical");
             
-            bool isBraking = Input.GetAxis("Vertical") < 0;
+            OnGetInput?.Invoke(horizontalInput, verticalInput);
+
+            bool isBraking = verticalInput > 0;
             if (isBraking)
                 OnPressBrake?.Invoke();
             else
                 OnUnpressBrake?.Invoke();
+        }
 
+        void StateLights()
+        {
             if (Input.GetKeyDown(KeyCode.L))
                 OnSetStateLights?.Invoke();
+        }
 
+        void GearInput()
+        {
             if (Input.GetKeyDown(KeyCode.LeftShift))
                 OnGetGearInputShiftUp?.Invoke();
 
             if (Input.GetKeyDown(KeyCode.LeftControl))
                 OnGetGearInputShiftDown?.Invoke();
+        }
 
+        void ClutchInput()
+        {
             bool isClutchPressed = Input.GetKey(KeyCode.RightShift);
             OnClutch?.Invoke(isClutchPressed);
-
-            float horizontalInput = Input.GetAxis("Horizontal");
-            float verticalInput = -Input.GetAxis("Vertical");
-
-            if (Mathf.Approximately(horizontalInput, 0)
-                && Mathf.Approximately(verticalInput, 0))
-                return;
-
-            OnGetInput?.Invoke(horizontalInput, verticalInput);
         }
     }
 }
