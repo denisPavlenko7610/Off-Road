@@ -6,30 +6,19 @@ namespace Off_Road
     public class CarInput : MonoBehaviour
     {
         public event Action<float, float> OnGetInput;
-
         public event Action OnGetGearInputShiftUp;
         public event Action OnGetGearInputShiftDown;
-        public event Action OnSetStateLights;
-        public event Action OnPressBrake;
-        public event Action OnUnpressBrake;
-
         public event Action<bool> OnClutch;
+        public event Action OnSetEngineState;
 
         void Update()
         {
             GetInput();
         }
-
         void GetInput()
         {
-            bool isBraking = Input.GetAxis("Vertical") < 0;
-            if (isBraking)
-                OnPressBrake?.Invoke();
-            else
-                OnUnpressBrake?.Invoke();
-
-            if (Input.GetKeyDown(KeyCode.L))
-                OnSetStateLights?.Invoke();
+            if (Input.GetKeyDown(KeyCode.E))
+                OnSetEngineState?.Invoke();
 
             if (Input.GetKeyDown(KeyCode.LeftShift))
                 OnGetGearInputShiftUp?.Invoke();
