@@ -1988,8 +1988,8 @@ MonoBehaviour:
   _frontLights:
   - {fileID: 4631360022517245065}
   - {fileID: 7433350671628355312}
-  _frontGlass: {fileID: 0}
-  _backGlass: {fileID: 0}
+  _frontGlass: {fileID: 3355915708565375050}
+  _backGlass: {fileID: 4859503060438172120}
   _intensityBreakingLights: 70
   _intensityBackLights: 30
 --- !u!114 &1832964450400461280

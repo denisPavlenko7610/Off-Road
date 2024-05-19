@@ -228,7 +228,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _carController: {fileID: 0}
-  <CarInfoSO>k__BackingField: {fileID: 11400000, guid: c66b4cc2503544c4d8bb24615494db04, type: 2}
+  _carInfoSO: {fileID: 11400000, guid: c66b4cc2503544c4d8bb24615494db04, type: 2}
   _minRpmArrowAngle: 0
   _maxRpmArrowAngle: -255
   _textSpeed: {fileID: 888513956403746151}
@@ -374,11 +374,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '0
-
-    km/h
-
-'
+  m_text: "0 \n km/h\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 19d2c99544708ed4d9be7a9a21a7d9b9, type: 2}
   m_sharedMaterial: {fileID: -6591416287816738772, guid: 19d2c99544708ed4d9be7a9a21a7d9b9, type: 2}
