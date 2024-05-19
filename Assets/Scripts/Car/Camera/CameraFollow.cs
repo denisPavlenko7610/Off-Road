@@ -28,6 +28,7 @@ namespace Off_Road.Car.Camera
         {
             UpdateCameraRotation();
         }
+        
         void UpdateCameraRotation()
         {
             float wantedAngle = rotationVector.y;

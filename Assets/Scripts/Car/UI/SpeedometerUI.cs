@@ -44,11 +44,11 @@ namespace Off_Road
             _carController.OnGearUpdate -= UpdateGearUI;
         }
 
-        private void UpdateRPM()
+        void UpdateRPM()
         {
             if (_arrow == null)
                 return;
-            
+
             float rpmRatio = _carController.RPMEngine / CarInfoSO.RedLine;
             float arrowAngle = Mathf.Lerp(_minRpmArrowAngle, _maxRpmArrowAngle, rpmRatio);
             _arrow.localEulerAngles = new Vector3(0, 0, arrowAngle);
@@ -58,7 +58,7 @@ namespace Off_Road
         {
             if (_textSpeed == null)
                 return;
-            
+
             _textSpeed.text = $"{(int)_carController.SpeedAuto}\n km/h";
         }
 

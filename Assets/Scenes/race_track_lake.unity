@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 428566102}
-  m_IndirectSpecularColor: {r: 2.252825, g: 1.4393255, b: 1.0658685, a: 1}
+  m_IndirectSpecularColor: {r: 2.2529547, g: 1.4393731, b: 1.0658685, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2110,11 +2110,11 @@ Transform:
   m_GameObject: {fileID: 315162670}
   serializedVersion: 2
   m_LocalRotation: {x: -0.06072012, y: 0.85961586, z: -0.10517037, w: -0.49629924}
-  m_LocalPosition: {x: 5.5236053, y: 2.6098566, z: 3.4939098}
+  m_LocalPosition: {x: 7.37, y: 2.4, z: 4.26}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1353341121}
+  m_Father: {fileID: 1458950271}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!81 &315162672
 AudioListener:
@@ -9146,7 +9146,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1458950271}
-  - {fileID: 315162671}
   - {fileID: 1499450994}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -9920,6 +9919,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 543450651912912025}
+  - {fileID: 315162671}
   m_Father: {fileID: 1353341121}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1468610950
@@ -14334,7 +14334,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9013639311166590627, guid: 77a0bfc0b86f749498eab28186e984af, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -9.577896
+      value: -9.577881
       objectReference: {fileID: 0}
     - target: {fileID: 9013639311166590627, guid: 77a0bfc0b86f749498eab28186e984af, type: 3}
       propertyPath: m_AnchoredPosition.y
