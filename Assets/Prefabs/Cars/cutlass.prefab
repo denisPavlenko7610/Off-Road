@@ -1967,13 +1967,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e36886499cbf20c4c857c52f36f75de1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _carInput: {fileID: 5450158252534428625}
   _frontLights:
   - {fileID: 4631360022517245065}
   - {fileID: 7433350671628355312}
-  FrontGlass: {fileID: 3355915708565375050}
-  BackGlass: {fileID: 4859503060438172120}
-  _intensityBreakingLights: 100
-  _intensityBackLights: 50
+  _frontGlass: {fileID: 3355915708565375050}
+  _backGlass: {fileID: 4859503060438172120}
+  _intensityBreakingLights: 70
+  _intensityBackLights: 30
 --- !u!114 &1832964450400461280
 MonoBehaviour:
   m_ObjectHideFlags: 0
