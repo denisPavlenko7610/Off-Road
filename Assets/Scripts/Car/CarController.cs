@@ -15,6 +15,7 @@ namespace Off_Road.Car
         public event Action OnSpeedUpdate;
         public event Action OnGearUpdate;
 
+        [SerializeField] EngineControl _engineControl;//
         [field: SerializeField] public CarInfoSO CarInfoSO { get; private set; }
         [SerializeField, Attach] CarInput carInput;
         [SerializeField] DriveUnit _driveUnit;
@@ -22,7 +23,7 @@ namespace Off_Road.Car
 
         List<Wheel> _frontWheels = new();
         List<Wheel> _rearWheels = new();
-        
+
         public float SpeedAuto { get; private set; }
         public float RPMEngine { get; private set; }
         public int CurrentGear { get; private set; }
@@ -86,6 +87,8 @@ namespace Off_Road.Car
         {
             foreach (Wheel wheel in _wheels)
             {
+                SpeedAuto = ConvertMToKM(wheel.WheelCollider.attachedRigidbody.velocity.magnitude);
+
                 if (_verticalInput < Mathf.Epsilon)
                 {
                     wheel.WheelCollider.brakeTorque = 0;
@@ -95,6 +98,7 @@ namespace Off_Road.Car
                     wheel.WheelCollider.brakeTorque = CarInfoSO.BrakeForce;
                 }
             }
+            OnSpeedUpdate?.Invoke();
         }
 
         void SetupWheels()
@@ -209,10 +213,21 @@ namespace Off_Road.Car
                     * CarInfoSO.GearRatios[CurrentGear] * CarInfoSO.DifferentialRatio * 5252f * _clutch;
             }
 
+            //if (!_engineControl.IsRunning)//
+               // DecreaseRpmEngine();
+
             OnRPMUpdate?.Invoke();
 
             return currentTorque;
         }
+
+        //void DecreaseRpmEngine()//
+        //{
+         //   RPMEngine -= CarInfoSO.DecreaseRPMIntensity * Time.deltaTime;//
+          //  _wheelRPM = 0;//
+          //  if (RPMEngine < 0)
+           //     RPMEngine = 0f;
+       // }
 
         void AccelerateWheels(List<Wheel> wheels)
         {

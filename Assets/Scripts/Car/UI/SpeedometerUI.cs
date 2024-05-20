@@ -2,11 +2,14 @@
 using RDTools.AutoAttach;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Off_Road
 {
     public class SpeedometerUI : MonoBehaviour
     {
+        private static readonly Color _darkGrayColor = new Color(0.2f, 0.2f, 0.2f);//
+
         [SerializeField, Attach(Attach.Scene)] CarController _carController;
         [SerializeField] CarInfoSO _carInfoSO;
 
@@ -17,6 +20,9 @@ namespace Off_Road
         [SerializeField] TextMeshProUGUI _textGear;
 
         [SerializeField] RectTransform _arrow;
+
+        [SerializeField] Image _engineStateIndicator;
+        [SerializeField] Image _headlightIndicator;
 
         public CarInfoSO CarInfoSO { get => _carInfoSO; }
 
@@ -63,5 +69,17 @@ namespace Off_Road
         }
 
         void UpdateGearUI() => _textGear.text = _carController.CurrentGear.ToString();
+
+        public void SetEngineStartIndicator() => _engineStateIndicator.color = _darkGrayColor;//
+
+        public void SetEngineStopIndicator() => _engineStateIndicator.color = Color.red;//
+
+        public void SetHeadlightOn() => _headlightIndicator.color = Color.green;//
+
+        public void SetHeadlightOff() => _headlightIndicator.color = _darkGrayColor;//
+        
+
+
+
     }
 }

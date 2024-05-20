@@ -38,7 +38,7 @@ namespace Off_Road
 
         void MovementInput()
         {
-            float horizontalInput = Input.GetAxisRaw("Horizontal");
+            float horizontalInput = Input.GetAxis("Horizontal");
             float verticalInput = -Input.GetAxisRaw("Vertical");
             
             OnGetInput?.Invoke(horizontalInput, verticalInput);

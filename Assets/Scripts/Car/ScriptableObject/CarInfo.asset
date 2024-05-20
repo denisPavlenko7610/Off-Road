@@ -16,7 +16,7 @@ MonoBehaviour:
   MotorForce: 100
   BrakeForce: 50000
   IdleRPM: 800
-  RedLine: 7500
+  RedLine: 7000
   IdleRPMLimit: 200
   RandomAdditionalRPM: 50
   RotateAngle: 180
