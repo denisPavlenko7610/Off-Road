@@ -83,6 +83,8 @@ namespace Off_Road.Car
                 StartCoroutine(ChangeGear(-1));
         }
 
+
+
         void ApplyBrake()
         {
             foreach (Wheel wheel in _wheels)
@@ -90,15 +92,12 @@ namespace Off_Road.Car
                 SpeedAuto = ConvertMToKM(wheel.WheelCollider.attachedRigidbody.velocity.magnitude);
 
                 if (_verticalInput < Mathf.Epsilon)
-                {
                     wheel.WheelCollider.brakeTorque = 0;
-                }
                 else
-                {
                     wheel.WheelCollider.brakeTorque = CarInfoSO.BrakeForce;
-                }
             }
             OnSpeedUpdate?.Invoke();
+            OnRPMUpdate?.Invoke();//
         }
 
         void SetupWheels()
@@ -213,21 +212,20 @@ namespace Off_Road.Car
                     * CarInfoSO.GearRatios[CurrentGear] * CarInfoSO.DifferentialRatio * 5252f * _clutch;
             }
 
-            //if (!_engineControl.IsRunning)//
-               // DecreaseRpmEngine();
+            if (!_engineControl.IsRunning)//
+                DecreaseRpmEngine();
 
             OnRPMUpdate?.Invoke();
 
             return currentTorque;
         }
 
-        //void DecreaseRpmEngine()//
-        //{
-         //   RPMEngine -= CarInfoSO.DecreaseRPMIntensity * Time.deltaTime;//
-          //  _wheelRPM = 0;//
-          //  if (RPMEngine < 0)
-           //     RPMEngine = 0f;
-       // }
+        void DecreaseRpmEngine()//
+        {
+            RPMEngine -= CarInfoSO.DecreaseRPMIntensity * Time.deltaTime;
+            if (RPMEngine < 0)
+                RPMEngine = 0f;
+        }
 
         void AccelerateWheels(List<Wheel> wheels)
         {
