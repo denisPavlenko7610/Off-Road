@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 428566102}
-  m_IndirectSpecularColor: {r: 2.2529032, g: 1.439417, b: 1.0659505, a: 1}
+  m_IndirectSpecularColor: {r: 2.2532942, g: 1.4395486, b: 1.0659105, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -8716,6 +8716,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 344127617}
     m_Modifications:
+    - target: {fileID: 325911110261408573, guid: 9a219d91a530204419ef1ca38dbadf65, type: 3}
+      propertyPath: m_Color.b
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 325911110261408573, guid: 9a219d91a530204419ef1ca38dbadf65, type: 3}
+      propertyPath: m_Color.g
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 325911110261408573, guid: 9a219d91a530204419ef1ca38dbadf65, type: 3}
+      propertyPath: m_Color.r
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 836380060784498142, guid: 9a219d91a530204419ef1ca38dbadf65, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1772125213694157364, guid: 9a219d91a530204419ef1ca38dbadf65, type: 3}
       propertyPath: m_Name
       value: Speedometer
@@ -8804,6 +8820,10 @@ PrefabInstance:
       propertyPath: _carController
       value: 
       objectReference: {fileID: 543450651912912026}
+    - target: {fileID: 6293841145776696788, guid: 9a219d91a530204419ef1ca38dbadf65, type: 3}
+      propertyPath: _engineRPMIndicator
+      value: 
+      objectReference: {fileID: 2011807831}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -9897,7 +9917,7 @@ Transform:
   m_GameObject: {fileID: 1458950269}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 14.08, y: 0.62, z: 7.67}
+  m_LocalPosition: {x: 14.08, y: 0.34, z: 7.67}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -12829,6 +12849,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: c92bea14e5c4591408be760558da7b90, type: 3}
   m_PrefabInstance: {fileID: 2008379211}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2011807831 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 325911110261408573, guid: 9a219d91a530204419ef1ca38dbadf65, type: 3}
+  m_PrefabInstance: {fileID: 1263517320}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &2021872097
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14288,6 +14319,10 @@ PrefabInstance:
       propertyPath: _fuelLevel
       value: 
       objectReference: {fileID: 1605962430}
+    - target: {fileID: 543450651912912010, guid: 07367046f69a6bd4ca239463acf3089c, type: 3}
+      propertyPath: _driveUnit
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 543450651912912010, guid: 07367046f69a6bd4ca239463acf3089c, type: 3}
       propertyPath: _engineControl
       value: 

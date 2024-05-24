@@ -14,13 +14,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MaxSteerAngle: 30
   MotorForce: 100
-  BrakeForce: 50000
+  BrakeForce: 70000
   IdleRPM: 800
   RedLine: 7000
   IdleRPMLimit: 200
-  RandomAdditionalRPM: 50
+  RandomAdditionalRPM: 10
   RotateAngle: 180
-  DifferentialRatio: 4
+  DifferentialRatio: 6
+  DecreaseRPMIntensity: 2000
   MaxSpeedPerGear:
   - 0
   - 30
@@ -63,8 +64,8 @@ MonoBehaviour:
     m_RotationOrder: 4
   GearRatios:
   - 3
-  - 2.5
-  - 2
+  - 3.5
+  - 2.2
   - 1.5
   - 1
   - 0.8

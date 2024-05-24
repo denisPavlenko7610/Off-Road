@@ -15,7 +15,7 @@ namespace Off_Road.Car
         public event Action OnSpeedUpdate;
         public event Action OnGearUpdate;
 
-        [SerializeField] EngineControl _engineControl;//
+        [SerializeField] EngineControl _engineControl;
         [field: SerializeField] public CarInfoSO CarInfoSO { get; private set; }
         [SerializeField, Attach] CarInput carInput;
         [SerializeField] DriveUnit _driveUnit;
@@ -41,8 +41,24 @@ namespace Off_Road.Car
         WaitForSeconds _waitForChangeGearInS = new WaitForSeconds(0.5f);
         WaitForSeconds _waitForDecreaseGearInS = new WaitForSeconds(0.1f);
         WaitForSeconds _waitForIncreaseGearInS = new WaitForSeconds(0.7f);
+        WaitForSeconds _speedUpdateInterval = new WaitForSeconds(0.2f);
+
+        Coroutine _speedUpdateCoroutine;
 
         void OnEnable()
+        {
+            SubscribeToCarInputEvents();
+            _speedUpdateCoroutine = StartCoroutine(SpeedUpdateRoutine());
+        }
+
+        void OnDisable()
+        {
+            UnSubscribeToCarInputEvents();
+            if (_speedUpdateCoroutine != null)
+                StopCoroutine(_speedUpdateCoroutine);
+        }
+
+        void SubscribeToCarInputEvents()
         {
             carInput.OnGetInput += GetInput;
             carInput.OnGetGearInputShiftUp += GetGearInputUp;
@@ -50,7 +66,7 @@ namespace Off_Road.Car
             carInput.OnClutch += HandleClutch;
         }
 
-        void OnDisable()
+        void UnSubscribeToCarInputEvents()
         {
             carInput.OnGetInput -= GetInput;
             carInput.OnGetGearInputShiftUp -= GetGearInputUp;
@@ -83,8 +99,6 @@ namespace Off_Road.Car
                 StartCoroutine(ChangeGear(-1));
         }
 
-
-
         void ApplyBrake()
         {
             foreach (Wheel wheel in _wheels)
@@ -96,8 +110,7 @@ namespace Off_Road.Car
                 else
                     wheel.WheelCollider.brakeTorque = CarInfoSO.BrakeForce;
             }
-            OnSpeedUpdate?.Invoke();
-            OnRPMUpdate?.Invoke();//
+            float currentTorque = CalculateTorque();
         }
 
         void SetupWheels()
@@ -172,29 +185,19 @@ namespace Off_Road.Car
         void Accelerate()
         {
             if (_driveUnit == DriveUnit.Rear)
-            {
                 AccelerateWheels(_rearWheels);
-            }
             else if (_driveUnit == DriveUnit.FrontWheel)
-            {
                 AccelerateWheels(_frontWheels);
-            }
             else
-            {
                 AccelerateWheels(_wheels);
-            }
         }
 
         float CalculateTorque()
         {
             float currentTorque = 0;
 
-            if (RPMEngine < CarInfoSO.IdleRPM + CarInfoSO.IdleRPMLimit
-                && _verticalInput == -0
-                && CurrentGear == 0)
-            {
+            if (RPMEngine < CarInfoSO.IdleRPM + CarInfoSO.IdleRPMLimit && _verticalInput == -0 && CurrentGear == 0)
                 _gearState = GearState.Neutral;
-            }
 
             if (_clutch < Mathf.Epsilon)
             {
@@ -212,19 +215,22 @@ namespace Off_Road.Car
                     * CarInfoSO.GearRatios[CurrentGear] * CarInfoSO.DifferentialRatio * 5252f * _clutch;
             }
 
-            if (!_engineControl.IsRunning)//
-                DecreaseRpmEngine();
-
+            if (!_engineControl.IsRunning)
+            {
+                if (SpeedAuto > 0.1f)
+                    DecreaseRpmEngine();
+                else
+                    RPMEngine = 0;
+            }
             OnRPMUpdate?.Invoke();
-
             return currentTorque;
         }
 
-        void DecreaseRpmEngine()//
+        void DecreaseRpmEngine()
         {
             RPMEngine -= CarInfoSO.DecreaseRPMIntensity * Time.deltaTime;
-            if (RPMEngine < 0)
-                RPMEngine = 0f;
+            if (RPMEngine < CarInfoSO.IdleRPM)
+                RPMEngine = CarInfoSO.IdleRPM;
         }
 
         void AccelerateWheels(List<Wheel> wheels)
@@ -253,7 +259,6 @@ namespace Off_Road.Car
                     wheel.WheelCollider.motorTorque = 0;
                 }
             }
-            OnSpeedUpdate?.Invoke();
         }
 
         float ConvertMToKM(float value) => value * 3.6f;
@@ -271,11 +276,17 @@ namespace Off_Road.Car
                 wheelTransform.position = position;
                 wheelTransform.rotation = rotation;
 
-                if (wheel.WheelType == WheelType.FL
-                    || wheel.WheelType == WheelType.RL)
-                {
+                if (wheel.WheelType == WheelType.FL || wheel.WheelType == WheelType.RL)
                     wheelTransform.Rotate(Vector3.up, CarInfoSO.RotateAngle);
-                }
+            }
+        }
+
+        IEnumerator SpeedUpdateRoutine()
+        {
+            while (true)
+            {
+                OnSpeedUpdate?.Invoke();
+                yield return _speedUpdateInterval;
             }
         }
 
@@ -299,7 +310,6 @@ namespace Off_Road.Car
                     case < 0:
                         {
                             yield return _waitForDecreaseGearInS;
-
                             if (CurrentGear <= 0)
                             {
                                 _gearState = GearState.Running;

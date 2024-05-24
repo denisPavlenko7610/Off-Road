@@ -10,8 +10,9 @@ namespace Off_Road
         [SerializeField, Attach] CarTank _carTank;
         [SerializeField] ParticleSystem[] _particleSystems;
         [SerializeField, Attach] CarInput _carInput;
-        [SerializeField] SpeedometerUI _speedometerUI;//
-        [field: SerializeField] public bool IsRunning { get; private set; }//
+        [SerializeField] SpeedometerUI _speedometerUI;
+        [field: SerializeField] public bool IsRunning { get; private set; }
+        
 
         float _startFuelConsumptionRate;
 
@@ -36,13 +37,12 @@ namespace Off_Road
             if (IsRunning)
             {
                 StopEngine();
-                _speedometerUI.SetEngineStopIndicator();//
+                _speedometerUI.SetEngineStopIndicator();
             }
             else
             {
                 StartEngine();
-                _speedometerUI.SetEngineStartIndicator();//
-                
+                _speedometerUI.SetEngineStartIndicator();
             }
         }
 

@@ -5,7 +5,7 @@ namespace Off_Road.Car
 {
     public class CarLights : MonoBehaviour
     {
-        [SerializeField] SpeedometerUI _speedometerUI;//
+        [SerializeField] SpeedometerUI _speedometerUI;
         [SerializeField, Attach] CarInput _carInput;
         [SerializeField] Light[] _frontLights;
 
