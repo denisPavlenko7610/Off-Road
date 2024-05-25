@@ -87,8 +87,5 @@ namespace Off_Road
 
         public void SetHeadlightOff() => _headlightIndicator.color = _darkGrayColor;
 
-
-
-
     }
 }
