@@ -12,7 +12,6 @@ namespace Off_Road
         [SerializeField, Attach] CarInput _carInput;
         [SerializeField] SpeedometerUI _speedometerUI;
         [field: SerializeField] public bool IsRunning { get; private set; }
-        
 
         float _startFuelConsumptionRate;
 
@@ -64,13 +63,9 @@ namespace Off_Road
             foreach (ParticleSystem Smoke in _particleSystems)
             {
                 if (isRunning)
-                {
                     Smoke.Play();
-                }
                 else
-                {
                     Smoke.Stop();
-                }
             }
 
             print(logMessage);

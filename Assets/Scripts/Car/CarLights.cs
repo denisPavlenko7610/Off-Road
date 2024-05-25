@@ -36,7 +36,6 @@ namespace Off_Road.Car
             _lightsEnabled = !_lightsEnabled;
             ToggleLights(_frontLights, _lightsEnabled);
             SetEmission(_frontGlass, _lightsEnabled, Color.cyan, _intensityBackLights);
-
         }
 
         void BrakeLightsOn()
@@ -53,10 +52,10 @@ namespace Off_Road.Car
         {
             foreach (Light light in lights)
                 light.enabled = state;
-            if (state)//
-                _speedometerUI.SetHeadlightOn();//
-            else//
-                _speedometerUI.SetHeadlightOff();//
+            if (state)
+                _speedometerUI.SetHeadlightOn();
+            else
+                _speedometerUI.SetHeadlightOff();
         }
 
         void SetEmission(Renderer glass, bool enableEmission, Color color, float intensity)

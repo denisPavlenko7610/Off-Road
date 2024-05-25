@@ -74,10 +74,7 @@ namespace Off_Road.Car
             carInput.OnClutch -= HandleClutch;
         }
 
-        void Awake()
-        {
-            SetupWheels();
-        }
+        void Awake() => SetupWheels();
 
         void FixedUpdate()
         {
@@ -110,7 +107,11 @@ namespace Off_Road.Car
                 else
                     wheel.WheelCollider.brakeTorque = CarInfoSO.BrakeForce;
             }
-            float currentTorque = CalculateTorque();
+           
+            if (CurrentGear != 0)
+            {
+                float currentTorque = CalculateTorque();
+            }
         }
 
         void SetupWheels()
@@ -118,13 +119,9 @@ namespace Off_Road.Car
             foreach (Wheel wheel in _wheels)
             {
                 if (IsFrontWheel(wheel))
-                {
                     _frontWheels.Add(wheel);
-                }
                 else
-                {
                     _rearWheels.Add(wheel);
-                }
             }
         }
 
@@ -136,10 +133,7 @@ namespace Off_Road.Car
             CalculateClutch();
         }
 
-        void HandleClutch(bool isClutchPressed)
-        {
-            _isClutchPressed = isClutchPressed;
-        }
+        void HandleClutch(bool isClutchPressed) => _isClutchPressed = isClutchPressed;
 
         void CalculateClutch()
         {
@@ -150,10 +144,9 @@ namespace Off_Road.Car
                     case GearState.Neutral:
                         {
                             _clutch = 0;
-                            if (Mathf.Abs(_verticalInput) > Mathf.Epsilon)
-                            {
+                            if (Mathf.Abs(_verticalInput) > Mathf.Epsilon && CurrentGear != 0)
                                 _gearState = GearState.Running;
-                            }
+
                             break;
                         }
                     default:
@@ -164,18 +157,14 @@ namespace Off_Road.Car
                 }
             }
             else
-            {
                 _clutch = 0;
-            }
         }
 
         void Steer()
         {
             _steeringAngle = CarInfoSO.MaxSteerAngle * _horizontalInput;
             foreach (var wheel in _frontWheels)
-            {
                 wheel.WheelCollider.steerAngle = _steeringAngle;
-            }
         }
 
         bool IsFrontWheel(Wheel wheel)
@@ -195,6 +184,12 @@ namespace Off_Road.Car
         float CalculateTorque()
         {
             float currentTorque = 0;
+
+            if (CurrentGear == 0 && _engineControl.IsRunning)
+            {
+                RPMEngine = Mathf.Lerp(RPMEngine, Mathf.Max(CarInfoSO.IdleRPM, CarInfoSO.RedLine * -_verticalInput * 2f)
+                    + Random.Range(-CarInfoSO.RandomAdditionalRPM, CarInfoSO.RandomAdditionalRPM), Time.deltaTime);
+            }
 
             if (RPMEngine < CarInfoSO.IdleRPM + CarInfoSO.IdleRPMLimit && _verticalInput == -0 && CurrentGear == 0)
                 _gearState = GearState.Neutral;
@@ -236,28 +231,21 @@ namespace Off_Road.Car
         void AccelerateWheels(List<Wheel> wheels)
         {
             if (_verticalInput > Mathf.Epsilon)
-            {
                 return;
-            }
 
             float currentTorque = CalculateTorque();
+
             if (_gearState == GearState.Neutral)
-            {
                 return;
-            }
 
             foreach (Wheel wheel in wheels)
             {
                 SpeedAuto = ConvertMToKM(wheel.WheelCollider.attachedRigidbody.velocity.magnitude);
 
                 if (SpeedAuto < CarInfoSO.MaxSpeedPerGear[CurrentGear])
-                {
                     wheel.WheelCollider.motorTorque = currentTorque * _verticalInput;
-                }
                 else
-                {
                     wheel.WheelCollider.motorTorque = 0;
-                }
             }
         }
 

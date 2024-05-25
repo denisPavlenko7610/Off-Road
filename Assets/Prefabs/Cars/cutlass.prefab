@@ -1873,8 +1873,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8544743893330582834}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: -1, z: 0, w: 0}
-  m_LocalPosition: {x: 94.77, y: 2.831, z: 30.24}
+  m_LocalRotation: {x: -0, y: -0.5000001, z: -0, w: -0.8660254}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1964,6 +1964,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d55ff9d8131c41aca73986f6e9e5f965, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _engineControl: {fileID: 557237450306845817}
   <CarInfoSO>k__BackingField: {fileID: 11400000, guid: c66b4cc2503544c4d8bb24615494db04, type: 2}
   carInput: {fileID: 5450158252534428625}
   _driveUnit: 2
@@ -1984,6 +1985,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e36886499cbf20c4c857c52f36f75de1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _speedometerUI: {fileID: 0}
   _carInput: {fileID: 5450158252534428625}
   _frontLights:
   - {fileID: 4631360022517245065}
@@ -2051,6 +2053,8 @@ MonoBehaviour:
   - {fileID: 3179446434019031745}
   - {fileID: 248377079587373481}
   _carInput: {fileID: 5450158252534428625}
+  _speedometerUI: {fileID: 0}
+  <IsRunning>k__BackingField: 0
 --- !u!114 &5450158252534428625
 MonoBehaviour:
   m_ObjectHideFlags: 0

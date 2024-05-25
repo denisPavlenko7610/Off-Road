@@ -10,7 +10,7 @@ namespace Off_Road.Car
 
         [field: SerializeField]
         public float CurrentFuel { get; set; }
-        
+
         [field: SerializeField]
         public float FuelConsumptionRate { get; set; } = 0.1f;
 
@@ -20,13 +20,9 @@ namespace Off_Road.Car
         void Start()
         {
             if (PlayerPrefs.HasKey(CarConstants.FUEL_LEVEL_KEY))
-            {
                 CurrentFuel = PlayerPrefs.GetFloat(CarConstants.FUEL_LEVEL_KEY);
-            }
             else
-            {
                 CurrentFuel = MaxFuel;
-            }
         }
 
         private void Update()
@@ -39,6 +35,7 @@ namespace Off_Road.Car
         {
             UpdateFuelLevel();
         }
+
         void UpdateFuelLevel()
         {
             ConsumeFuel(FuelConsumptionRate * Time.deltaTime);
@@ -63,9 +60,7 @@ namespace Off_Road.Car
         void OnApplicationQuit()
         {
             if (Input.GetKeyDown(KeyCode.K))
-            {
                 PlayerPrefs.SetFloat(CarConstants.FUEL_LEVEL_KEY, CurrentFuel);
-            }
         }
     }
 }

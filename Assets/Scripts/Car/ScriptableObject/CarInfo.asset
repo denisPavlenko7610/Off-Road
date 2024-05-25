@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f91878a5e89a0e4f9d3d14e7f7f7275, type: 3}
   m_Name: CarInfo
   m_EditorClassIdentifier: 
-  MaxSteerAngle: 30
+  MaxSteerAngle: 40
   MotorForce: 100
   BrakeForce: 70000
   IdleRPM: 800
