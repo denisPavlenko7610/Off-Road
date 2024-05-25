@@ -14,6 +14,7 @@ namespace Off_Road
         public int RandomAdditionalRPM = 50;
         public float RotateAngle = 180;
         public float DifferentialRatio = 4f;
+        public float DecreaseRPMIntensity = 2000f;
 
         public float[] MaxSpeedPerGear;
         public AnimationCurve HpToRPMCurve;

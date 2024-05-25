@@ -5,6 +5,7 @@ namespace Off_Road.Car
 {
     public class CarLights : MonoBehaviour
     {
+        [SerializeField] SpeedometerUI _speedometerUI;
         [SerializeField, Attach] CarInput _carInput;
         [SerializeField] Light[] _frontLights;
 
@@ -51,6 +52,10 @@ namespace Off_Road.Car
         {
             foreach (Light light in lights)
                 light.enabled = state;
+            if (state)
+                _speedometerUI.SetHeadlightOn();
+            else
+                _speedometerUI.SetHeadlightOff();
         }
 
         void SetEmission(Renderer glass, bool enableEmission, Color color, float intensity)
