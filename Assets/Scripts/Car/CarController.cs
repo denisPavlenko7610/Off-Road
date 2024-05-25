@@ -189,6 +189,7 @@ namespace Off_Road.Car
             {
                 RPMEngine = Mathf.Lerp(RPMEngine, Mathf.Max(CarInfoSO.IdleRPM, CarInfoSO.RedLine * -_verticalInput * 2f)
                     + Random.Range(-CarInfoSO.RandomAdditionalRPM, CarInfoSO.RandomAdditionalRPM), Time.deltaTime);
+                _wheelRPM = 0f;
             }
 
             if (RPMEngine < CarInfoSO.IdleRPM + CarInfoSO.IdleRPMLimit && _verticalInput == -0 && CurrentGear == 0)
@@ -199,7 +200,7 @@ namespace Off_Road.Car
                 RPMEngine = Mathf.Lerp(RPMEngine, Mathf.Max(CarInfoSO.IdleRPM, CarInfoSO.RedLine * _verticalInput)
                     + Random.Range(-CarInfoSO.RandomAdditionalRPM, CarInfoSO.RandomAdditionalRPM), Time.deltaTime);
             }
-            else
+            else if (CurrentGear != 0)
             {
                 _wheelRPM = Mathf.Abs((_wheels[0].WheelCollider.rpm + _wheels[1].WheelCollider.rpm) / 2f)
                     * CarInfoSO.GearRatios[CurrentGear] * CarInfoSO.DifferentialRatio;
