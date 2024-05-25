@@ -190,6 +190,7 @@ namespace Off_Road.Car
                 RPMEngine = Mathf.Lerp(RPMEngine, Mathf.Max(CarInfoSO.IdleRPM, CarInfoSO.RedLine * -_verticalInput * 2f)
                     + Random.Range(-CarInfoSO.RandomAdditionalRPM, CarInfoSO.RandomAdditionalRPM), Time.deltaTime);
                 _wheelRPM = 0f;
+                RPMEngine = Mathf.Clamp(RPMEngine, 0f, CarInfoSO.RedLine);
             }
 
             if (RPMEngine < CarInfoSO.IdleRPM + CarInfoSO.IdleRPMLimit && _verticalInput == -0 && CurrentGear == 0)
