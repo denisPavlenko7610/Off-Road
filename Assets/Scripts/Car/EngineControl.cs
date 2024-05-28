@@ -10,7 +10,7 @@ namespace Off_Road
         [SerializeField, Attach] CarTank _carTank;
         [SerializeField] ParticleSystem[] _particleSystems;
         [SerializeField, Attach] CarInput _carInput;
-        [SerializeField, Attach] SpeedometerUI _speedometerUI;
+        [SerializeField] SpeedometerUI _speedometerUI;
         [field: SerializeField] public bool IsRunning { get; private set; }
 
         float _startFuelConsumptionRate;
