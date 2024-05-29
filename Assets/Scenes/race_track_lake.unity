@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 1.667537, g: 1.4236075, b: 1.3061582, a: 1}
+  m_IndirectSpecularColor: {r: 1.6675255, g: 1.423618, b: 1.3061734, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -6841,7 +6841,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _timeOfDay: 0
-  _orbitSpeed: 0.5
+  _orbitSpeed: 0.1
   _starsIntensity: 3
   _sun: {fileID: 1226064637}
   _moon: {fileID: 686734818}

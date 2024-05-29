@@ -1,5 +1,6 @@
 using Off_Road.Car;
 using RDTools.AutoAttach;
+using System;
 using UnityEngine;
 
 namespace Off_Road
@@ -12,6 +13,7 @@ namespace Off_Road
         [SerializeField, Attach] CarInput _carInput;
         [SerializeField] SpeedometerUI _speedometerUI;
         [field: SerializeField] public bool IsRunning { get; private set; }
+        public event Action<bool> OnSetEngineState;
 
         float _startFuelConsumptionRate;
 
@@ -43,6 +45,8 @@ namespace Off_Road
                 StartEngine();
                 _speedometerUI.SetEngineStartIndicator();
             }
+
+            OnSetEngineState?.Invoke(IsRunning);
         }
 
         void StartEngine()
