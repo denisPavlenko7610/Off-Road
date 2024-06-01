@@ -8,9 +8,6 @@ namespace Off_Road
 {
     public class SpeedometerUI : MonoBehaviour
     {
-        private static readonly Color _darkGrayColor = new Color(0.2f, 0.2f, 0.2f);
-        private static readonly Color _orange = new Color(1f, 0.3f, 0f);
-
         [SerializeField, Attach(Attach.Scene)] CarController _carController;
         [SerializeField] CarInfoSO _carInfoSO;
 
@@ -26,6 +23,12 @@ namespace Off_Road
         [SerializeField] Image _engineStateIndicator;
         [SerializeField] Image _headlightIndicator;
         [SerializeField] Image _engineRPMIndicator;
+        
+        private static readonly Color _darkGrayColor = new Color(0.2f, 0.2f, 0.2f);
+        private static readonly Color _orange = new Color(1f, 0.3f, 0f);
+
+        float _smoothTime = 0.3F;
+        float _currentAngularVelocity;
 
         public CarInfoSO CarInfoSO { get => _carInfoSO; }
 
@@ -59,14 +62,15 @@ namespace Off_Road
                 return;
 
             float rpmRatio = _carController.RPMEngine / CarInfoSO.RedLine;
-            float arrowAngle = Mathf.Lerp(_minRpmArrowAngle, _maxRpmArrowAngle, rpmRatio);
-            _arrow.localEulerAngles = new Vector3(0, 0, arrowAngle);
+            float targetAngle = Mathf.Lerp(_minRpmArrowAngle, _maxRpmArrowAngle, rpmRatio);
+            float currentAngle = _arrow.localEulerAngles.z;
+            float smoothAngle = Mathf.SmoothDampAngle(currentAngle, targetAngle, ref _currentAngularVelocity, _smoothTime);
 
-            if (_carController.RPMEngine > _carInfoSO.RedLine - _correctionLevelForRPMIndicator)
-                _engineRPMIndicator.color = _orange;
-            else
-                _engineRPMIndicator.color = _darkGrayColor;
+            _arrow.localEulerAngles = new Vector3(0, 0, smoothAngle);
 
+            _engineRPMIndicator.color = _carController.RPMEngine > _carInfoSO.RedLine - _correctionLevelForRPMIndicator 
+                ? _orange 
+                : _darkGrayColor;
         }
 
         void UpdateSpeedometer()
@@ -76,9 +80,7 @@ namespace Off_Road
 
             _textSpeed.text = $"{(int)_carController.SpeedAuto}\n km/h";
         }
-
-        void UpdateGearUI() => _textGear.text = _carController.CurrentGear.ToString();
-
+        
         public void SetEngineStartIndicator() => _engineStateIndicator.color = _darkGrayColor;
 
         public void SetEngineStopIndicator() => _engineStateIndicator.color = Color.red;
@@ -86,6 +88,7 @@ namespace Off_Road
         public void SetHeadlightOn() => _headlightIndicator.color = Color.green;
 
         public void SetHeadlightOff() => _headlightIndicator.color = _darkGrayColor;
-
+        
+        void UpdateGearUI() => _textGear.text = _carController.CurrentGear.ToString();
     }
 }

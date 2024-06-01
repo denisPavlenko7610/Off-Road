@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 9055432301212773601}
   - component: {fileID: 3303330692183047752}
   - component: {fileID: 4498115965805846332}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: badge3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -58,6 +58,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -94,7 +97,7 @@ GameObject:
   - component: {fileID: 5299175230828970216}
   - component: {fileID: 7961681143879960253}
   - component: {fileID: 9003986650824143490}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: rear-view
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -141,6 +144,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -177,7 +183,7 @@ GameObject:
   - component: {fileID: 4688266361684375389}
   - component: {fileID: 4726213313650770283}
   - component: {fileID: 846471641285803617}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: trim
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -224,6 +230,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -260,7 +269,7 @@ GameObject:
   - component: {fileID: 7026986133875060846}
   - component: {fileID: 5747304799939367365}
   - component: {fileID: 8936614637109967256}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Circle.002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -307,6 +316,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -343,7 +355,7 @@ GameObject:
   - component: {fileID: 423951681385740689}
   - component: {fileID: 3716934234323426009}
   - component: {fileID: 6791079770544213140}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: glass
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -390,6 +402,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -424,7 +439,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1984972711080996004}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Lights
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -459,7 +474,7 @@ GameObject:
   - component: {fileID: 4678543313262800536}
   - component: {fileID: 2312521280783562860}
   - component: {fileID: 1881503646965887573}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: door_handle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -506,6 +521,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -542,7 +560,7 @@ GameObject:
   - component: {fileID: 5131895885489707729}
   - component: {fileID: 4631360022517245065}
   - component: {fileID: 5851831032063814311}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: LightFrontRight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -572,9 +590,8 @@ Light:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1765083797757272310}
   m_Enabled: 0
-  serializedVersion: 10
+  serializedVersion: 11
   m_Type: 0
-  m_Shape: 0
   m_Color: {r: 0.998556, g: 1, b: 0.8584906, a: 1}
   m_Intensity: 675.44525
   m_Range: 31.68
@@ -624,8 +641,12 @@ Light:
   m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
+  m_ForceVisible: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+  m_LightUnit: 1
+  m_LuxAtDistance: 1
+  m_EnableSpotReflector: 1
 --- !u!114 &5851831032063814311
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -638,14 +659,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a68c43fe1f2a47cfa234b5eeaa98012, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Intensity: 1288.3743
+  m_PointlightHDType: 0
+  m_SpotLightShape: 0
+  m_AreaLightShape: 0
   m_EnableSpotReflector: 1
+  m_LightUnit: 0
   m_LuxAtDistance: 1
+  m_Intensity: 1288.3743
   m_InnerSpotPercent: 0
   m_SpotIESCutoffPercent: 100
   m_LightDimmer: 1
   m_VolumetricDimmer: 1
-  m_LightUnit: 0
   m_FadeDistance: 10000
   m_VolumetricFadeDistance: 10000
   m_AffectDiffuse: 1
@@ -665,15 +689,27 @@ MonoBehaviour:
   m_IESPoint: {fileID: 0}
   m_IESSpot: {fileID: 0}
   m_IncludeForRayTracing: 1
+  m_IncludeForPathTracing: 1
   m_AreaLightShadowCone: 120
   m_UseScreenSpaceShadows: 0
   m_InteractsWithSky: 1
   m_AngularDiameter: 0.5
-  m_FlareSize: 2
-  m_FlareTint: {r: 1, g: 1, b: 1, a: 1}
-  m_FlareFalloff: 4
-  m_SurfaceTexture: {fileID: 0}
-  m_SurfaceTint: {r: 1, g: 1, b: 1, a: 1}
+  diameterMultiplerMode: 0
+  diameterMultiplier: 1
+  diameterOverride: 0.5
+  celestialBodyShadingSource: 1
+  sunLightOverride: {fileID: 0}
+  sunColor: {r: 1, g: 1, b: 1, a: 1}
+  sunIntensity: 130000
+  moonPhase: 0.2
+  moonPhaseRotation: 0
+  earthshine: 1
+  flareSize: 2
+  flareTint: {r: 1, g: 1, b: 1, a: 1}
+  flareFalloff: 4
+  flareMultiplier: 1
+  surfaceTexture: {fileID: 0}
+  surfaceTint: {r: 1, g: 1, b: 1, a: 1}
   m_Distance: 1.5e+11
   m_UseRayTracedShadows: 0
   m_NumRayTracingSamples: 4
@@ -694,6 +730,14 @@ MonoBehaviour:
   m_BlockerSampleCount: 24
   m_FilterSampleCount: 16
   m_MinFilterSize: 0.1
+  m_DirLightPCSSBlockerSampleCount: 24
+  m_DirLightPCSSFilterSampleCount: 16
+  m_DirLightPCSSMaxPenumbraSize: 0.56
+  m_DirLightPCSSMaxSamplingDistance: 0.5
+  m_DirLightPCSSMinFilterSizeTexels: 1.5
+  m_DirLightPCSSMinFilterMaxAngularDiameter: 10
+  m_DirLightPCSSBlockerSearchAngularDiameter: 12
+  m_DirLightPCSSBlockerSamplingClumpExponent: 2
   m_KernelSize: 5
   m_LightAngle: 1
   m_MaxDepthBias: 0.001
@@ -740,14 +784,11 @@ MonoBehaviour:
   m_AreaLightEmissiveMeshShadowCastingMode: 0
   m_AreaLightEmissiveMeshMotionVectorGenerationMode: 0
   m_AreaLightEmissiveMeshLayer: -1
-  m_Version: 11
+  m_Version: 13
   m_ObsoleteShadowResolutionTier: 1
   m_ObsoleteUseShadowQualitySettings: 0
   m_ObsoleteCustomShadowResolution: 512
   m_ObsoleteContactShadows: 0
-  m_PointlightHDType: 0
-  m_SpotLightShape: 0
-  m_AreaLightShape: 0
 --- !u!1 &1854663342176663336
 GameObject:
   m_ObjectHideFlags: 0
@@ -759,7 +800,7 @@ GameObject:
   - component: {fileID: 7734424384869668780}
   - component: {fileID: 6636416603028099969}
   - component: {fileID: 5090877574800716849}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: trim2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -806,6 +847,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -841,7 +885,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2384288258167618057}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Wheels
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -877,7 +921,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1880848349745013791}
   - component: {fileID: 4602846527042484039}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: StartEngineSound
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -910,6 +954,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: -4534217514821783940, guid: 1665511e615caa0418e3a680f9243280, type: 2}
   m_audioClip: {fileID: 8300000, guid: 24b496c523efc5449a462ac2af6eb293, type: 3}
+  m_Resource: {fileID: 8300000, guid: 24b496c523efc5449a462ac2af6eb293, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 0.02
   m_Pitch: 1
@@ -1006,7 +1051,7 @@ GameObject:
   - component: {fileID: 5009927191672569261}
   - component: {fileID: 1381162070544445248}
   - component: {fileID: 2493048998671396863}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: plate
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1053,6 +1098,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -1089,7 +1137,7 @@ GameObject:
   - component: {fileID: 4094110390990634311}
   - component: {fileID: 4680548761601637239}
   - component: {fileID: 3754440608529287606}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: black
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1136,6 +1184,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -1172,7 +1223,7 @@ GameObject:
   - component: {fileID: 2725956588196910326}
   - component: {fileID: 3663539663897857681}
   - component: {fileID: 3355915708565375050}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: lights
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1219,6 +1270,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -1255,7 +1309,7 @@ GameObject:
   - component: {fileID: 5556672282694394549}
   - component: {fileID: 208002159974578673}
   - component: {fileID: 1535066596207731526}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: chrome
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1302,6 +1356,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -1339,7 +1396,7 @@ GameObject:
   - component: {fileID: 5988356521276790491}
   - component: {fileID: 630411928755312908}
   - component: {fileID: 4859503060438172120}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: lights-glass
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1386,6 +1443,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -1421,7 +1481,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7565222289017497601}
   - component: {fileID: 4897943860050890296}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: StopEngineSound
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1454,6 +1514,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: -4534217514821783940, guid: 1665511e615caa0418e3a680f9243280, type: 2}
   m_audioClip: {fileID: 8300000, guid: 8fca9d827c08e014686bea2a14ac2881, type: 3}
+  m_Resource: {fileID: 8300000, guid: 8fca9d827c08e014686bea2a14ac2881, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 0.27
   m_Pitch: 1
@@ -1550,7 +1611,7 @@ GameObject:
   - component: {fileID: 8736229974916889081}
   - component: {fileID: 3247105166179520709}
   - component: {fileID: 82641571474378755}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: badges 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1597,6 +1658,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -1634,7 +1698,7 @@ GameObject:
   - component: {fileID: 4725985916718833029}
   - component: {fileID: 1085372106630404831}
   - component: {fileID: 8814791993116156006}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: body
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -1681,6 +1745,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -1740,7 +1807,7 @@ GameObject:
   - component: {fileID: 7106708277721256410}
   - component: {fileID: 4026222515185282268}
   - component: {fileID: 6261499536210616803}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: screws
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1787,6 +1854,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -1823,7 +1893,7 @@ GameObject:
   - component: {fileID: 7582257728817028841}
   - component: {fileID: 2504151273403125139}
   - component: {fileID: 2781893430088375525}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: badges
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1870,6 +1940,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -1904,7 +1977,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6835434928948955514}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: WheelColliders
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1940,7 +2013,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7465174159185182498}
   - component: {fileID: 7393595495865253553}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: EngineSound
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1973,6 +2046,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: -4534217514821783940, guid: 1665511e615caa0418e3a680f9243280, type: 2}
   m_audioClip: {fileID: 8300000, guid: 316224186e8ae6543990a05f4dc13981, type: 3}
+  m_Resource: {fileID: 8300000, guid: 316224186e8ae6543990a05f4dc13981, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 0.02
   m_Pitch: 1
@@ -2069,7 +2143,7 @@ GameObject:
   - component: {fileID: 5437591628209505484}
   - component: {fileID: 4213040738142635795}
   - component: {fileID: 3772593855832299163}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: plate-holder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2116,6 +2190,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -2152,7 +2229,7 @@ GameObject:
   - component: {fileID: 6617148900286386809}
   - component: {fileID: 5237119031290544141}
   - component: {fileID: 2185087701917473855}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: glass2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2199,6 +2276,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -2243,7 +2323,7 @@ GameObject:
   - component: {fileID: 557237450306845817}
   - component: {fileID: 5450158252534428625}
   - component: {fileID: 3302278645623639524}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: cutlass
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2339,7 +2419,7 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 3
   m_Size: {x: 1.7612485, y: 0.55842376, z: 4.8909025}
-  m_Center: {x: 0.00018465437, y: -0.15365231, z: 2.6063972}
+  m_Center: {x: 0, y: -0.15365231, z: 2.6063972}
 --- !u!114 &543450651912912010
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2487,7 +2567,7 @@ GameObject:
   - component: {fileID: 382581562656636658}
   - component: {fileID: 7433350671628355312}
   - component: {fileID: 8197497565718312381}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: LightFrontLeft
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2517,9 +2597,8 @@ Light:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8560594469158311084}
   m_Enabled: 0
-  serializedVersion: 10
+  serializedVersion: 11
   m_Type: 0
-  m_Shape: 0
   m_Color: {r: 0.998556, g: 1, b: 0.8584906, a: 1}
   m_Intensity: 675.44525
   m_Range: 31.68
@@ -2569,8 +2648,12 @@ Light:
   m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
+  m_ForceVisible: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+  m_LightUnit: 1
+  m_LuxAtDistance: 1
+  m_EnableSpotReflector: 1
 --- !u!114 &8197497565718312381
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2583,14 +2666,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a68c43fe1f2a47cfa234b5eeaa98012, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Intensity: 1288.3743
+  m_PointlightHDType: 0
+  m_SpotLightShape: 0
+  m_AreaLightShape: 0
   m_EnableSpotReflector: 1
+  m_LightUnit: 0
   m_LuxAtDistance: 1
+  m_Intensity: 1288.3743
   m_InnerSpotPercent: 0
   m_SpotIESCutoffPercent: 100
   m_LightDimmer: 1
   m_VolumetricDimmer: 1
-  m_LightUnit: 0
   m_FadeDistance: 10000
   m_VolumetricFadeDistance: 10000
   m_AffectDiffuse: 1
@@ -2610,15 +2696,27 @@ MonoBehaviour:
   m_IESPoint: {fileID: 0}
   m_IESSpot: {fileID: 0}
   m_IncludeForRayTracing: 1
+  m_IncludeForPathTracing: 1
   m_AreaLightShadowCone: 120
   m_UseScreenSpaceShadows: 0
   m_InteractsWithSky: 1
   m_AngularDiameter: 0.5
-  m_FlareSize: 2
-  m_FlareTint: {r: 1, g: 1, b: 1, a: 1}
-  m_FlareFalloff: 4
-  m_SurfaceTexture: {fileID: 0}
-  m_SurfaceTint: {r: 1, g: 1, b: 1, a: 1}
+  diameterMultiplerMode: 0
+  diameterMultiplier: 1
+  diameterOverride: 0.5
+  celestialBodyShadingSource: 1
+  sunLightOverride: {fileID: 0}
+  sunColor: {r: 1, g: 1, b: 1, a: 1}
+  sunIntensity: 130000
+  moonPhase: 0.2
+  moonPhaseRotation: 0
+  earthshine: 1
+  flareSize: 2
+  flareTint: {r: 1, g: 1, b: 1, a: 1}
+  flareFalloff: 4
+  flareMultiplier: 1
+  surfaceTexture: {fileID: 0}
+  surfaceTint: {r: 1, g: 1, b: 1, a: 1}
   m_Distance: 1.5e+11
   m_UseRayTracedShadows: 0
   m_NumRayTracingSamples: 4
@@ -2639,6 +2737,14 @@ MonoBehaviour:
   m_BlockerSampleCount: 24
   m_FilterSampleCount: 16
   m_MinFilterSize: 0.1
+  m_DirLightPCSSBlockerSampleCount: 24
+  m_DirLightPCSSFilterSampleCount: 16
+  m_DirLightPCSSMaxPenumbraSize: 0.56
+  m_DirLightPCSSMaxSamplingDistance: 0.5
+  m_DirLightPCSSMinFilterSizeTexels: 1.5
+  m_DirLightPCSSMinFilterMaxAngularDiameter: 10
+  m_DirLightPCSSBlockerSearchAngularDiameter: 12
+  m_DirLightPCSSBlockerSamplingClumpExponent: 2
   m_KernelSize: 5
   m_LightAngle: 1
   m_MaxDepthBias: 0.001
@@ -2685,14 +2791,11 @@ MonoBehaviour:
   m_AreaLightEmissiveMeshShadowCastingMode: 0
   m_AreaLightEmissiveMeshMotionVectorGenerationMode: 0
   m_AreaLightEmissiveMeshLayer: -1
-  m_Version: 11
+  m_Version: 13
   m_ObsoleteShadowResolutionTier: 1
   m_ObsoleteUseShadowQualitySettings: 0
   m_ObsoleteCustomShadowResolution: 512
   m_ObsoleteContactShadows: 0
-  m_PointlightHDType: 0
-  m_SpotLightShape: 0
-  m_AreaLightShape: 0
 --- !u!1 &8656467718153378198
 GameObject:
   m_ObjectHideFlags: 0
@@ -2704,7 +2807,7 @@ GameObject:
   - component: {fileID: 3368084247066108724}
   - component: {fileID: 2321300133896648355}
   - component: {fileID: 3202882627176632709}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: black2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2751,6 +2854,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -2829,7 +2935,7 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -7511558181221131132, guid: 5ec01655044494e479695219092db81b, type: 3}
-      propertyPath: m_Materials.Array.data[0]
+      propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 392b15c5f4f88e444a60083fa24de75a, type: 2}
     - target: {fileID: 919132149155446097, guid: 5ec01655044494e479695219092db81b, type: 3}
@@ -2838,7 +2944,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 5ec01655044494e479695219092db81b, type: 3}
       propertyPath: m_Layer
-      value: 0
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 5ec01655044494e479695219092db81b, type: 3}
       propertyPath: m_IsActive
@@ -2875,10 +2981,10 @@ WheelCollider:
   m_SuspensionSpring:
     spring: 90000
     damper: 9000
-    targetPosition: 1
-  m_SuspensionDistance: 0.3
-  m_ForceAppPointDistance: 0
-  m_Mass: 20
+    targetPosition: 0.8
+  m_SuspensionDistance: 0.1
+  m_ForceAppPointDistance: 0.02
+  m_Mass: 300
   m_WheelDampingRate: 1
   m_ForwardFriction:
     m_ExtremumSlip: 0.4
@@ -2887,7 +2993,7 @@ WheelCollider:
     m_AsymptoteValue: 0.5
     m_Stiffness: 1.5
   m_SidewaysFriction:
-    m_ExtremumSlip: 0.2
+    m_ExtremumSlip: 0.5
     m_ExtremumValue: 1
     m_AsymptoteSlip: 0.5
     m_AsymptoteValue: 0.75
@@ -2974,7 +3080,7 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -7511558181221131132, guid: 5ec01655044494e479695219092db81b, type: 3}
-      propertyPath: m_Materials.Array.data[0]
+      propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 392b15c5f4f88e444a60083fa24de75a, type: 2}
     - target: {fileID: 919132149155446097, guid: 5ec01655044494e479695219092db81b, type: 3}
@@ -2983,7 +3089,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 5ec01655044494e479695219092db81b, type: 3}
       propertyPath: m_Layer
-      value: 0
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: -5754084199372789682, guid: 5ec01655044494e479695219092db81b, type: 3}
@@ -3016,10 +3122,10 @@ WheelCollider:
   m_SuspensionSpring:
     spring: 90000
     damper: 9000
-    targetPosition: 1
-  m_SuspensionDistance: 0.3
-  m_ForceAppPointDistance: 0
-  m_Mass: 20
+    targetPosition: 0.8
+  m_SuspensionDistance: 0.1
+  m_ForceAppPointDistance: 0.02
+  m_Mass: 300
   m_WheelDampingRate: 1
   m_ForwardFriction:
     m_ExtremumSlip: 0.4
@@ -3028,7 +3134,7 @@ WheelCollider:
     m_AsymptoteValue: 0.5
     m_Stiffness: 1.5
   m_SidewaysFriction:
-    m_ExtremumSlip: 0.2
+    m_ExtremumSlip: 0.5
     m_ExtremumValue: 1
     m_AsymptoteSlip: 0.5
     m_AsymptoteValue: 0.75
@@ -3115,7 +3221,7 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -7511558181221131132, guid: 5ec01655044494e479695219092db81b, type: 3}
-      propertyPath: m_Materials.Array.data[0]
+      propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 392b15c5f4f88e444a60083fa24de75a, type: 2}
     - target: {fileID: 919132149155446097, guid: 5ec01655044494e479695219092db81b, type: 3}
@@ -3124,7 +3230,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 5ec01655044494e479695219092db81b, type: 3}
       propertyPath: m_Layer
-      value: 0
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: -5754084199372789682, guid: 5ec01655044494e479695219092db81b, type: 3}
@@ -3162,10 +3268,10 @@ WheelCollider:
   m_SuspensionSpring:
     spring: 90000
     damper: 9000
-    targetPosition: 1
-  m_SuspensionDistance: 0.3
-  m_ForceAppPointDistance: 0
-  m_Mass: 20
+    targetPosition: 0.8
+  m_SuspensionDistance: 0.1
+  m_ForceAppPointDistance: 0.02
+  m_Mass: 300
   m_WheelDampingRate: 1
   m_ForwardFriction:
     m_ExtremumSlip: 0.4
@@ -3174,7 +3280,7 @@ WheelCollider:
     m_AsymptoteValue: 0.5
     m_Stiffness: 1.5
   m_SidewaysFriction:
-    m_ExtremumSlip: 0.2
+    m_ExtremumSlip: 0.5
     m_ExtremumValue: 1
     m_AsymptoteSlip: 0.5
     m_AsymptoteValue: 0.75
@@ -3256,7 +3362,7 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -7511558181221131132, guid: 5ec01655044494e479695219092db81b, type: 3}
-      propertyPath: m_Materials.Array.data[0]
+      propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 392b15c5f4f88e444a60083fa24de75a, type: 2}
     - target: {fileID: 919132149155446097, guid: 5ec01655044494e479695219092db81b, type: 3}
@@ -3265,7 +3371,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 5ec01655044494e479695219092db81b, type: 3}
       propertyPath: m_Layer
-      value: 0
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: -5754084199372789682, guid: 5ec01655044494e479695219092db81b, type: 3}
@@ -3303,10 +3409,10 @@ WheelCollider:
   m_SuspensionSpring:
     spring: 90000
     damper: 9000
-    targetPosition: 1
-  m_SuspensionDistance: 0.3
-  m_ForceAppPointDistance: 0
-  m_Mass: 20
+    targetPosition: 0.8
+  m_SuspensionDistance: 0.1
+  m_ForceAppPointDistance: 0.02
+  m_Mass: 300
   m_WheelDampingRate: 1
   m_ForwardFriction:
     m_ExtremumSlip: 0.4
@@ -3315,7 +3421,7 @@ WheelCollider:
     m_AsymptoteValue: 0.5
     m_Stiffness: 1.5
   m_SidewaysFriction:
-    m_ExtremumSlip: 0.2
+    m_ExtremumSlip: 0.5
     m_ExtremumValue: 1
     m_AsymptoteSlip: 0.5
     m_AsymptoteValue: 0.75
@@ -3355,6 +3461,10 @@ PrefabInstance:
     - target: {fileID: 1878362519866218698, guid: 5c3dfdeef5c7f60428d5002b4bbee2d4, type: 3}
       propertyPath: m_Name
       value: SmokeLeft
+      objectReference: {fileID: 0}
+    - target: {fileID: 1878362519866218698, guid: 5c3dfdeef5c7f60428d5002b4bbee2d4, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4471967519481853172, guid: 5c3dfdeef5c7f60428d5002b4bbee2d4, type: 3}
       propertyPath: m_LocalScale.x
@@ -3430,6 +3540,10 @@ PrefabInstance:
     - target: {fileID: 1878362519866218698, guid: 5c3dfdeef5c7f60428d5002b4bbee2d4, type: 3}
       propertyPath: m_Name
       value: SmokeRight
+      objectReference: {fileID: 0}
+    - target: {fileID: 1878362519866218698, guid: 5c3dfdeef5c7f60428d5002b4bbee2d4, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4471967519481853172, guid: 5c3dfdeef5c7f60428d5002b4bbee2d4, type: 3}
       propertyPath: m_LocalScale.x
@@ -3547,12 +3661,16 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -7511558181221131132, guid: 5ec01655044494e479695219092db81b, type: 3}
-      propertyPath: m_Materials.Array.data[0]
+      propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 392b15c5f4f88e444a60083fa24de75a, type: 2}
     - target: {fileID: 919132149155446097, guid: 5ec01655044494e479695219092db81b, type: 3}
       propertyPath: m_Name
       value: FLWheel
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 5ec01655044494e479695219092db81b, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3617,12 +3735,16 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -7511558181221131132, guid: 5ec01655044494e479695219092db81b, type: 3}
-      propertyPath: m_Materials.Array.data[0]
+      propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 392b15c5f4f88e444a60083fa24de75a, type: 2}
     - target: {fileID: 919132149155446097, guid: 5ec01655044494e479695219092db81b, type: 3}
       propertyPath: m_Name
       value: RLWheel
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 5ec01655044494e479695219092db81b, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 5ec01655044494e479695219092db81b, type: 3}
       propertyPath: m_IsActive
@@ -3691,12 +3813,16 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -7511558181221131132, guid: 5ec01655044494e479695219092db81b, type: 3}
-      propertyPath: m_Materials.Array.data[0]
+      propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 392b15c5f4f88e444a60083fa24de75a, type: 2}
     - target: {fileID: 919132149155446097, guid: 5ec01655044494e479695219092db81b, type: 3}
       propertyPath: m_Name
       value: RRWheel
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 5ec01655044494e479695219092db81b, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3761,12 +3887,16 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -7511558181221131132, guid: 5ec01655044494e479695219092db81b, type: 3}
-      propertyPath: m_Materials.Array.data[0]
+      propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 392b15c5f4f88e444a60083fa24de75a, type: 2}
     - target: {fileID: 919132149155446097, guid: 5ec01655044494e479695219092db81b, type: 3}
       propertyPath: m_Name
       value: FRWheel
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 5ec01655044494e479695219092db81b, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

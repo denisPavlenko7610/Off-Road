@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: e2ae2996f91d32944a854e57dfc5a7ff
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 157192
+  packageName: Mesh Combiner
+  packageVersion: 1.2
+  assetPath: Assets/MeshCombiner/Editor/MeshCombinerEditor.cs
+  uploadId: 399985

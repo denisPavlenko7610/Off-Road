@@ -56,7 +56,7 @@ namespace Off_Road.Car.Camera
             temp.y = _car.transform.eulerAngles.y + _forwardDegree;
             rotationVector = temp;
 
-            float accelerationValue = _carRigidbody.velocity.magnitude;
+            float accelerationValue = _carRigidbody.linearVelocity.magnitude;
             _camera.fieldOfView = _defaultFOV + accelerationValue * _zoomRatio * Time.deltaTime;
         }
 
