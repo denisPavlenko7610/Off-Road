@@ -6,6 +6,7 @@ namespace Off_Road.Car
     public class GasStationRefuel : MonoBehaviour
     {
         [SerializeField] float _timeToRefuel = 2f;
+        [SerializeField] CarInput _carInput;
 
         CarTank _carTank;
         bool _isTanking;
@@ -20,17 +21,18 @@ namespace Off_Road.Car
                 return;
 
             _carTank = _Tank;
-            _carTank.OnTriggeredRefuel += StartCoroutineRefuel;
+            _carInput.OnTriggeredRefuel += StartCoroutineRefuel;
         }
 
         void OnTriggerExit(Collider other)
         {
             UnsubscribeOnRefuelInput();
         }
+
         void UnsubscribeOnRefuelInput()
         {
             if (_carTank != null)
-                _carTank.OnTriggeredRefuel -= StartCoroutineRefuel;
+                _carInput.OnTriggeredRefuel -= StartCoroutineRefuel;
         }
 
         IEnumerator Refuel()
@@ -56,6 +58,5 @@ namespace Off_Road.Car
 
             StartCoroutine(Refuel());
         }
-
     }
 }

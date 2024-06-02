@@ -15,7 +15,6 @@ namespace Off_Road.Car
         public float FuelConsumptionRate { get; set; } = 0.1f;
 
         public Action<float> OnFuelChanged;
-        public Action OnTriggeredRefuel;
 
         void Start()
         {
@@ -23,12 +22,6 @@ namespace Off_Road.Car
                 CurrentFuel = PlayerPrefs.GetFloat(CarConstants.FUEL_LEVEL_KEY);
             else
                 CurrentFuel = MaxFuel;
-        }
-
-        private void Update()
-        {
-            if (Input.GetKeyDown(KeyCode.F))
-                OnTriggeredRefuel?.Invoke();
         }
 
         void FixedUpdate()

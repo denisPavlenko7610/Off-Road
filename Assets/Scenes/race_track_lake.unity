@@ -14576,6 +14576,17 @@ Rigidbody:
   m_CorrespondingSourceObject: {fileID: 8814791993116156008, guid: 07367046f69a6bd4ca239463acf3089c, type: 3}
   m_PrefabInstance: {fileID: 8814791991329110784}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &543450651912912035 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5450158252534428625, guid: 07367046f69a6bd4ca239463acf3089c, type: 3}
+  m_PrefabInstance: {fileID: 8814791991329110784}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 940073808416e5c4999547f2171b5de4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1150955877799223889
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14641,6 +14652,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 662049203}
     m_Modifications:
+    - target: {fileID: 592785373753836754, guid: b693a9f6a1bf1f34b90838a6dea6f583, type: 3}
+      propertyPath: _carInput
+      value: 
+      objectReference: {fileID: 543450651912912035}
     - target: {fileID: 945267791000489949, guid: b693a9f6a1bf1f34b90838a6dea6f583, type: 3}
       propertyPath: m_IsActive
       value: 0

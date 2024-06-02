@@ -15,6 +15,37 @@ namespace Off_Road
 
         public event Action<bool> OnClutch;
         public event Action OnSetEngineState;
+        public event Action OnTriggeredRefuel;
+
+        CarInputSystem _carInputSystem;
+
+        void Awake()
+        {
+            _carInputSystem = new CarInputSystem();
+
+            _carInputSystem.Car.SetStateEngine.performed += context => EngineState();
+            _carInputSystem.Car.SetStateLights.performed += context => StateLights();
+            _carInputSystem.Car.DownGear.performed += context => DownGear();
+            _carInputSystem.Car.UpGear.performed += context => UpGear();
+            _carInputSystem.Car.RefuelCar.performed += context => Refuel();
+           
+            //!!!!!!!! _carInputSystem.Car.Move.performed += context => MovementInput();
+        }
+
+        void OnEnable()
+        {
+            _carInputSystem.Enable();
+        }
+
+        void OnDisable()
+        {
+            _carInputSystem.Disable();
+        }
+
+        void Refuel()
+        {
+            OnTriggeredRefuel?.Invoke();
+        }
 
         void Update()
         {
@@ -23,24 +54,25 @@ namespace Off_Road
 
         void GetInput()
         {
-            EngineState();
-            MovementInput();
-            StateLights();
-            GearInput();
-            ClutchInput();
+            //EngineState();
+            //MovementInput();
+            //StateLights();
+            //DownGear();
+            //UpGear();
+            // ClutchInput();
         }
 
         void EngineState()
         {
-            if (Input.GetKeyDown(KeyCode.E))
-                OnSetEngineState?.Invoke();
+            //if (Input.GetKeyDown(KeyCode.E))
+            OnSetEngineState?.Invoke();
         }
 
         void MovementInput()
         {
             float horizontalInput = Input.GetAxis("Horizontal");
             float verticalInput = -Input.GetAxisRaw("Vertical");
-            
+
             OnGetInput?.Invoke(horizontalInput, verticalInput);
 
             bool isBraking = verticalInput > 0;
@@ -52,17 +84,21 @@ namespace Off_Road
 
         void StateLights()
         {
-            if (Input.GetKeyDown(KeyCode.L))
-                OnSetStateLights?.Invoke();
+            //if (Input.GetKeyDown(KeyCode.L))
+            OnSetStateLights?.Invoke();
         }
 
-        void GearInput()
+        void UpGear()
         {
-            if (Input.GetKeyDown(KeyCode.LeftShift))
-                OnGetGearInputShiftUp?.Invoke();
+            //if (Input.GetKeyDown(KeyCode.LeftShift))
+            OnGetGearInputShiftUp?.Invoke();
+            ClutchInput();
+        }
 
-            if (Input.GetKeyDown(KeyCode.LeftControl))
-                OnGetGearInputShiftDown?.Invoke();
+        void DownGear()
+        {
+            // if (Input.GetKeyDown(KeyCode.LeftControl))
+            OnGetGearInputShiftDown?.Invoke();
         }
 
         void ClutchInput()
