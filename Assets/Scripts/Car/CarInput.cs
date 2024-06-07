@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 namespace Off_Road
 {
@@ -19,27 +20,37 @@ namespace Off_Road
 
         CarInputSystem _carInputSystem;
 
+        Vector2 _moveVector;
+
         void Awake()
         {
             _carInputSystem = new CarInputSystem();
 
-            _carInputSystem.Car.SetStateEngine.performed += context => EngineState();
-            _carInputSystem.Car.SetStateLights.performed += context => StateLights();
-            _carInputSystem.Car.DownGear.performed += context => DownGear();
-            _carInputSystem.Car.UpGear.performed += context => UpGear();
-            _carInputSystem.Car.RefuelCar.performed += context => Refuel();
-           
+
             //!!!!!!!! _carInputSystem.Car.Move.performed += context => MovementInput();
         }
 
         void OnEnable()
         {
             _carInputSystem.Enable();
+
+            _carInputSystem.Car.SetStateEngine.performed += context => EngineState();
+            _carInputSystem.Car.SetStateLights.performed += context => StateLights();
+            _carInputSystem.Car.DownGear.performed += context => DownGear();
+            _carInputSystem.Car.UpGear.performed += context => UpGear();
+            _carInputSystem.Car.RefuelCar.performed += context => Refuel();
+            //_carInputSystem.Car.Move.performed += MovementInput;
         }
 
         void OnDisable()
         {
             _carInputSystem.Disable();
+
+            _carInputSystem.Car.SetStateEngine.performed += context => EngineState();
+            _carInputSystem.Car.SetStateLights.performed += context => StateLights();
+            _carInputSystem.Car.DownGear.performed += context => DownGear();
+            _carInputSystem.Car.UpGear.performed += context => UpGear();
+            _carInputSystem.Car.RefuelCar.performed += context => Refuel();
         }
 
         void Refuel()
@@ -55,7 +66,7 @@ namespace Off_Road
         void GetInput()
         {
             //EngineState();
-            //MovementInput();
+            MovementInput();
             //StateLights();
             //DownGear();
             //UpGear();
@@ -68,7 +79,7 @@ namespace Off_Road
             OnSetEngineState?.Invoke();
         }
 
-        void MovementInput()
+        public void MovementInput()
         {
             float horizontalInput = Input.GetAxis("Horizontal");
             float verticalInput = -Input.GetAxisRaw("Vertical");
@@ -80,6 +91,7 @@ namespace Off_Road
                 OnPressBrake?.Invoke();
             else
                 OnUnpressBrake?.Invoke();
+
         }
 
         void StateLights()
